@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up — Speak Easy{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Create your account</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<p class="helptext">{{ field.help_text }}</p>{% endif %}
+            {% if field.errors %}<ul class="errorlist">{% for e in field.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        {% endfor %}
+        <button type="submit">Sign up</button>
+    </form>
+    <p class="link-row">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+</div>
+{% endblock %}

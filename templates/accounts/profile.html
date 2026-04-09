@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Profile — Speak Easy{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Hey, {{ user.username }}</h1>
+    {% if user.target_language %}
+        <p style="margin-bottom: 1.5rem;">Currently learning: <strong>{{ user.get_target_language_display }}</strong></p>
+    {% else %}
+        <p style="margin-bottom: 1.5rem;">You haven't chosen a language yet.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.target_language.id_for_label }}">{{ form.target_language.label }}</label>
+        {{ form.target_language }}
+        <button type="submit">Save</button>
+    </form>
+</div>
+{% endblock %}

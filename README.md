@@ -127,3 +127,58 @@ Do I know how language apps work? No. The goal of this will be to find out.
 
 
 
+
+
+
+Phases: 
+
+
+ Speak Easy — Build Roadmap
+
+  Phase 1: Foundation (accounts + onboarding)
+
+  - User registration & login
+  - User picks a target language on signup
+  - Basic profile page showing their chosen language
+  - Goal: a user exists and has a language to learn
+
+  ---
+  Phase 2: Lesson Content & Structure (lessons app)
+
+  - Design the Lesson and Phrase/Vocabulary models
+  - Seed data for at least one language following the README's outline:
+    - Sentence structure basics
+    - Core social phrases
+    - Pointing/location words
+    - High-power verbs
+  - Lesson list view + individual lesson view
+  - Goal: content exists and is viewable
+
+  ---
+  Phase 3: Learning Flow (lessons + progress apps)
+
+  - Users can work through a lesson (see phrase → translation → example)
+  - Mark items as learned / move to next
+  - Track which lessons a user has completed (progress app)
+  - Goal: a user can actually "do" a lesson from start to finish
+
+  ---
+  Phase 4: AI Integration (the differentiator)
+
+  - Use the Claude API (or similar) to generate lesson content dynamically for any language, using the README's prompt as the base
+  - "Fast mode" prompt from the README for quick-start sessions
+  - Optional: conversational practice mode (user types, AI responds in target language)
+  - Goal: any language works, not just seeded ones
+
+  ---
+  Phase 5: Retention & Polish
+
+  - Streak tracking (you already have progress app for this)
+  - Review mode — resurface phrases the user hasn't seen recently
+  - Basic UI polish / mobile-friendly layout
+  - Goal: users come back
+
+
+
+
+

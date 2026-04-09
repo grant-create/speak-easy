@@ -3,6 +3,7 @@
 {% block title %}{{ language.flag }} {{ language.name }} Lessons — Speak Easy{% endblock %}
 
 {% block content %}
+<p style="margin-bottom: 0.75rem;"><a href="{% url 'profile' %}" style="color: #666; text-decoration: none;">← Back to profile</a></p>
 <h1 style="margin-bottom: 1.5rem;">{{ language.flag }} {{ language.name }}</h1>
 
 {% if lessons %}

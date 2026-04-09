@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ language.flag }} {{ language.name }} Lessons — Speak Easy{% endblock %}
+
+{% block content %}
+<h1 style="margin-bottom: 1.5rem;">{{ language.flag }} {{ language.name }}</h1>
+
+{% if lessons %}
+    <div style="display: grid; gap: 0.75rem;">
+        {% for lesson in lessons %}
+            <a href="{% url 'lesson_detail' lesson.id %}" style="text-decoration: none; color: inherit;">
+                <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <span style="font-size: 0.8rem; color: #999; margin-right: 0.5rem;">{{ lesson.order }}</span>
+                        <strong>{{ lesson.title }}</strong>
+                    </div>
+                    <span style="color: #ccc;">›</span>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="card">
+        <p>No lessons available yet for {{ language.name }}.</p>
+    </div>
+{% endif %}
+{% endblock %}

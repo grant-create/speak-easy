@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }} — Speak Easy{% endblock %}
+
+{% block content %}
+<p style="margin-bottom: 0.5rem;"><a href="{% url 'lesson_list' %}" style="color: #666; text-decoration: none;">← Back to lessons</a></p>
+<h1 style="margin-bottom: 1.5rem;">{{ lesson.title }}</h1>
+
+{% for phrase in phrases %}
+    <div style="background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem;">
+        <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.4rem;">{{ phrase.original }}</p>
+        <p style="color: #555; margin-bottom: {% if phrase.example %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
+        {% if phrase.example %}
+            <p style="font-size: 0.88rem; color: #888; border-top: 1px solid #f0f0f0; padding-top: 0.6rem;">{{ phrase.example }}</p>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>No phrases in this lesson yet.</p>
+{% endfor %}
+{% endblock %}

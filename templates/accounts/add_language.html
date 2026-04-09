@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Add a Language — Speak Easy{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>What do you want to learn?</h1>
+    {% if not available %}
+        <p>You're already enrolled in every available language!</p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <div style="display: grid; gap: 0.75rem; margin-bottom: 1.5rem;">
+                {% for language in available %}
+                    <label style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border: 1px solid #ddd; border-radius: 6px; cursor: pointer;">
+                        <input type="radio" name="language" value="{{ language.id }}" required style="width: auto; margin: 0;">
+                        <span style="font-size: 1.4rem;">{{ language.flag }}</span>
+                        <span>{{ language.name }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+            <button type="submit">Start learning</button>
+        </form>
+    {% endif %}
+    {% if user.user_languages.exists %}
+        <p class="link-row"><a href="{% url 'profile' %}">Back to profile</a></p>
+    {% endif %}
+</div>
+{% endblock %}

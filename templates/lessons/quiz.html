@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }} — Practice{% endblock %}
+
+{% block content %}
+<div style="max-width: 520px; margin: 0 auto;">
+
+    <!-- Progress bar -->
+    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+        <a href="{% url 'lesson_detail' lesson.id %}" style="color: #999; text-decoration: none; font-size: 1.2rem;">✕</a>
+        <div style="flex: 1; background: #e9ecef; border-radius: 99px; height: 8px; overflow: hidden;">
+            <div style="background: #27ae60; height: 100%; width: {% widthratio current total 100 %}%; transition: width 0.3s;"></div>
+        </div>
+        <span style="font-size: 0.85rem; color: #999;">{{ current }}/{{ total }}</span>
+    </div>
+
+    {% if show_result %}
+        <!-- Result state -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            {% if last_result.is_correct %}
+                <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎉</div>
+                <h2 style="color: #27ae60; margin-bottom: 0.5rem;">Correct!</h2>
+            {% else %}
+                <div style="font-size: 3rem; margin-bottom: 0.5rem;">❌</div>
+                <h2 style="color: #c0392b; margin-bottom: 0.5rem;">Not quite</h2>
+                <p style="color: #555;">The answer was: <strong>{{ last_result.correct_answer }}</strong></p>
+            {% endif %}
+        </div>
+
+        <div style="background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;">
+            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.2rem;">{{ phrase.original }}</p>
+            {% if phrase.pronunciation %}
+                <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;">{{ phrase.pronunciation }}</p>
+            {% endif %}
+            <p style="color: #555;">{{ phrase.translation }}</p>
+        </div>
+
+        {% if is_last %}
+            <a href="{% url 'quiz_complete' lesson.id %}" class="btn" style="display: block; text-align: center; padding: 1rem; font-size: 1rem;">
+                See results →
+            </a>
+        {% else %}
+            <a href="{% url 'lesson_quiz' lesson.id %}?q={{ next_index }}" class="btn" style="display: block; text-align: center; padding: 1rem; font-size: 1rem;">
+                Next →
+            </a>
+        {% endif %}
+
+    {% else %}
+        <!-- Question state -->
+        <div style="background: #fff; border-radius: 8px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1.5rem; text-align: center;">
+            <p style="font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">What does this mean?</p>
+            <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.35rem;">{{ phrase.original }}</p>
+            {% if phrase.pronunciation %}
+                <p style="font-size: 0.9rem; color: #bbb; font-style: italic;">{{ phrase.pronunciation }}</p>
+            {% endif %}
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
+            <input type="hidden" name="correct" value="{{ phrase.translation }}">
+            <div style="display: grid; gap: 0.75rem;">
+                {% for choice in choices %}
+                    <button type="submit" name="chosen" value="{{ choice }}"
+                        style="width: 100%; padding: 1rem 1.25rem; background: #fff; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: border-color 0.15s;">
+                        {{ choice }}
+                    </button>
+                {% endfor %}
+            </div>
+        </form>
+    {% endif %}
+
+</div>
+{% endblock %}

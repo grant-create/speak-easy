@@ -18,9 +18,10 @@ class Lesson(models.Model):
 
 class Phrase(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='phrases')
-    original = models.CharField(max_length=300)    # in target language
-    translation = models.CharField(max_length=300) # in English
-    example = models.TextField(blank=True)         # usage in a sentence
+    original = models.CharField(max_length=300)       # in target language
+    pronunciation = models.CharField(max_length=300, blank=True)  # phonetic guide
+    translation = models.CharField(max_length=300)    # in English
+    example = models.TextField(blank=True)            # usage in a sentence
     order = models.PositiveIntegerField(default=0)
 
     def __str__(self):

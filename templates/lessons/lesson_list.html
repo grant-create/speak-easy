@@ -4,15 +4,28 @@
 
 {% block content %}
 <p style="margin-bottom: 0.75rem;"><a href="{% url 'profile' %}" style="color: #666; text-decoration: none;">← Back to profile</a></p>
-<h1 style="margin-bottom: 1.5rem;">{{ language.flag }} {{ language.name }}</h1>
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem;">
+    <h1>{{ language.flag }} {{ language.name }}</h1>
+    <span style="font-size: 0.9rem; color: #888;">{{ completed_count }} / {{ total_count }} complete</span>
+</div>
+
+{% if total_count %}
+    <div style="background: #e9ecef; border-radius: 99px; height: 6px; margin-bottom: 1.5rem; overflow: hidden;">
+        <div style="background: #27ae60; height: 100%; width: {% widthratio completed_count total_count 100 %}%; transition: width 0.3s;"></div>
+    </div>
+{% endif %}
 
 {% if lessons %}
     <div style="display: grid; gap: 0.75rem;">
         {% for lesson in lessons %}
-            <a href="{% url 'lesson_detail' lesson.id %}" style="text-decoration: none; color: inherit;">
-                <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between;">
-                    <div>
-                        <span style="font-size: 0.8rem; color: #999; margin-right: 0.5rem;">{{ lesson.order }}</span>
+                <a href="{% url 'lesson_detail' lesson.id %}" style="text-decoration: none; color: inherit;">
+                <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; {% if lesson.id in completed_ids %}opacity: 0.6;{% endif %}">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        {% if lesson.id in completed_ids %}
+                            <span style="color: #27ae60; font-size: 1.1rem;">✓</span>
+                        {% else %}
+                            <span style="color: #ccc; font-size: 0.8rem; min-width: 1rem; text-align: center;">{{ lesson.order }}</span>
+                        {% endif %}
                         <strong>{{ lesson.title }}</strong>
                     </div>
                     <span style="color: #ccc;">›</span>

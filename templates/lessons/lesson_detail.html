@@ -15,7 +15,7 @@
     <div style="background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem;">
         <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.2rem;">{{ phrase.original }}</p>
         {% if phrase.pronunciation %}
-            <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;">{{ phrase.pronunciation }}</p>
+            <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;"><span style="font-style: normal; font-weight: bold;">Pronunciation:</span> {{ phrase.pronunciation }}</p>
         {% endif %}
         <p style="color: #555; margin-bottom: {% if phrase.example %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
         {% if phrase.example %}

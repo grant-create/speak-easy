@@ -9,5 +9,6 @@
   {"model": "languages.language", "pk": 8, "fields": {"code": "ko", "name": "Korean", "flag": "🇰🇷"}},
   {"model": "languages.language", "pk": 9, "fields": {"code": "ar", "name": "Arabic", "flag": "🇸🇦"}},
   {"model": "languages.language", "pk": 10, "fields": {"code": "ru", "name": "Russian", "flag": "🇷🇺"}},
-  {"model": "languages.language", "pk": 11, "fields": {"code": "ga", "name": "Irish", "flag": "🇮🇪"}}
+  {"model": "languages.language", "pk": 11, "fields": {"code": "ga", "name": "Irish", "flag": "🇮🇪"}},
+  {"model": "languages.language", "pk": 12, "fields": {"code": "sv", "name": "Swedish", "flag": "🇸🇪"}}
 ]

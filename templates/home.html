@@ -3,36 +3,34 @@
 {% block title %}Speak Easy — Learn a language fast{% endblock %}
 
 {% block content %}
-<div style="text-align: center; padding: 2rem 0;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Learn a language.<br>Start speaking today.</h1>
-    <p style="font-size: 1.1rem; color: #555; max-width: 480px; margin: 0 auto 2rem;">
-        No flashcards of random nouns. No grammar drills. Just the words and phrases you'll actually use — from your very first session.
-    </p>
+<div class="hero">
+    <h1>Learn a language.<br>Start speaking today.</h1>
+    <p>No flashcards of random nouns. No grammar drills. Just the words and phrases you'll actually use — from your very first session.</p>
     {% if user.is_authenticated %}
-        <a href="{% url 'lesson_list' %}" class="btn" style="font-size: 1.1rem; padding: 0.9rem 2rem;">Go to my lessons</a>
+        <a href="{% url 'lesson_list' %}" class="btn btn-lg">Go to my lessons</a>
     {% else %}
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="{% url 'register' %}" class="btn" style="font-size: 1.1rem; padding: 0.9rem 2rem;">Get started — it's free</a>
-            <a href="{% url 'login' %}" class="btn" style="font-size: 1.1rem; padding: 0.9rem 2rem; background: #fff; color: #2c3e50; border: 2px solid #2c3e50;">Log in</a>
+        <div class="hero-actions">
+            <a href="{% url 'register' %}" class="btn btn-lg">Get started — it's free</a>
+            <a href="{% url 'login' %}" class="btn btn-lg btn-outline">Log in</a>
         </div>
     {% endif %}
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 3rem;">
-    <div class="card" style="text-align: center;">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🗣️</div>
-        <h3 style="margin-bottom: 0.5rem;">Usage first</h3>
-        <p style="font-size: 0.9rem; color: #666;">Learn what native speakers actually say, not textbook translations.</p>
+<div class="feature-grid">
+    <div class="card feature-card">
+        <div class="icon">🗣️</div>
+        <h3>Usage first</h3>
+        <p>Learn what native speakers actually say, not textbook translations.</p>
     </div>
-    <div class="card" style="text-align: center;">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
-        <h3 style="margin-bottom: 0.5rem;">Fast start</h3>
-        <p style="font-size: 0.9rem; color: #666;">Hold a basic conversation within your first hour.</p>
+    <div class="card feature-card">
+        <div class="icon">⚡</div>
+        <h3>Fast start</h3>
+        <p>Hold a basic conversation within your first hour.</p>
     </div>
-    <div class="card" style="text-align: center;">
-        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
-        <h3 style="margin-bottom: 0.5rem;">Any language</h3>
-        <p style="font-size: 0.9rem; color: #666;">Switch between languages any time. Pick up where you left off.</p>
+    <div class="card feature-card">
+        <div class="icon">🌍</div>
+        <h3>Any language</h3>
+        <p>Switch between languages any time. Pick up where you left off.</p>
     </div>
 </div>
 {% endblock %}

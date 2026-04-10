@@ -1,36 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Speak Easy{% endblock %}</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: sans-serif; background: #f5f5f5; color: #222; }
-        nav { background: #2c3e50; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        nav a { color: #fff; text-decoration: none; margin-left: 1rem; }
-        nav .brand { font-size: 1.2rem; font-weight: bold; margin-left: 0; }
-        main { max-width: 600px; margin: 3rem auto; padding: 0 1rem; }
-        .card { background: #fff; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        h1 { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.25rem; font-weight: bold; font-size: 0.9rem; }
-        input, select { width: 100%; padding: 0.6rem 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        button, .btn { display: inline-block; padding: 0.7rem 1.5rem; background: #2c3e50; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; text-decoration: none; }
-        button:hover, .btn:hover { background: #1a252f; }
-        .messages { margin-bottom: 1rem; }
-        .messages li { list-style: none; padding: 0.6rem 1rem; border-radius: 4px; background: #d4edda; color: #155724; margin-bottom: 0.5rem; }
-        .helptext { font-size: 0.8rem; color: #666; margin-top: -0.75rem; margin-bottom: 1rem; }
-        .errorlist { color: #c0392b; font-size: 0.85rem; margin-top: -0.75rem; margin-bottom: 0.75rem; list-style: none; }
-        .link-row { margin-top: 1rem; font-size: 0.9rem; }
-        .link-row a { color: #2c3e50; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
     <nav>
         <a class="brand" href="/">Speak Easy</a>
         <div>
             {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'profile' %}">{{ user.username }}</a>
                 <a href="{% url 'logout' %}">Log out</a>
             {% else %}
                 <a href="{% url 'login' %}">Log in</a>

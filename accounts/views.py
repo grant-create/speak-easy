@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
 from languages.models import Language
 
@@ -66,5 +67,4 @@ def switch_language(request, language_id):
     language = get_object_or_404(Language, id=language_id)
     request.user.user_languages.update(is_active=False)
     request.user.user_languages.filter(language=language).update(is_active=True)
-    messages.success(request, f'Switched to {language.name}.')
-    return redirect('profile')
+    return redirect('lesson_list')

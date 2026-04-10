@@ -3,65 +3,54 @@
 {% block title %}{{ lesson.title }} — Practice{% endblock %}
 
 {% block content %}
-<div style="max-width: 520px; margin: 0 auto;">
+<div class="quiz-wrap">
 
-    <!-- Progress bar -->
-    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-        <a href="{% url 'lesson_detail' lesson.id %}" style="color: #999; text-decoration: none; font-size: 1.2rem;">✕</a>
-        <div style="flex: 1; background: #e9ecef; border-radius: 99px; height: 8px; overflow: hidden;">
-            <div style="background: #27ae60; height: 100%; width: {% widthratio current total 100 %}%; transition: width 0.3s;"></div>
+    <div class="quiz-progress-row">
+        <a href="{% url 'lesson_detail' lesson.id %}" class="quiz-close">✕</a>
+        <div class="quiz-progress-track">
+            <div class="quiz-progress-fill" style="width: {% widthratio current total 100 %}%;"></div>
         </div>
-        <span style="font-size: 0.85rem; color: #999;">{{ current }}/{{ total }}</span>
+        <span class="quiz-counter">{{ current }}/{{ total }}</span>
     </div>
 
     {% if show_result %}
-        <!-- Result state -->
-        <div style="text-align: center; margin-bottom: 2rem;">
-            {% if last_result.is_correct %}
-                <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎉</div>
-                <h2 style="color: #27ae60; margin-bottom: 0.5rem;">Correct!</h2>
-            {% else %}
-                <div style="font-size: 3rem; margin-bottom: 0.5rem;">❌</div>
-                <h2 style="color: #c0392b; margin-bottom: 0.5rem;">Not quite</h2>
-                <p style="color: #555;">The answer was: <strong>{{ last_result.correct_answer }}</strong></p>
+        <div class="quiz-result{% if last_result.is_correct %} quiz-correct{% else %} quiz-wrong{% endif %}">
+            <div class="quiz-result-emoji">
+                {% if last_result.is_correct %}🎉{% else %}❌{% endif %}
+            </div>
+            <h2>{% if last_result.is_correct %}Correct!{% else %}Not quite{% endif %}</h2>
+            {% if not last_result.is_correct %}
+                <p class="quiz-wrong-answer">The answer was: <strong>{{ last_result.correct_answer }}</strong></p>
             {% endif %}
         </div>
 
-        <div style="background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;">
-            <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.2rem;">{{ phrase.original }}</p>
+        <div class="quiz-phrase-card">
+            <p class="phrase-original">{{ phrase.original }}</p>
             {% if phrase.pronunciation %}
-                <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;"><span style="font-style: normal; font-weight: bold;">Pronunciation:</span> {{ phrase.pronunciation }}</p>
+                <p class="phrase-pronunciation"><strong>Pronunciation:</strong> {{ phrase.pronunciation }}</p>
             {% endif %}
-            <p style="color: #555; margin-bottom: {% if phrase.word_breakdown %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
+            <p class="phrase-translation">{{ phrase.translation }}</p>
             {% if phrase.word_breakdown %}
-                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center;">
+                <div class="word-breakdown">
                     {% for item in phrase.word_breakdown %}
-                        <span style="background: #f0f4f8; border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.82rem;">
-                            <span style="font-weight: bold;">{{ item.word }}</span>
-                            <span style="color: #888;"> — {{ item.meaning }}</span>
-                        </span>
+                        <span class="word-chip"><strong>{{ item.word }}</strong> <span>— {{ item.meaning }}</span></span>
                     {% endfor %}
                 </div>
             {% endif %}
         </div>
 
         {% if is_last %}
-            <a href="{% url 'quiz_complete' lesson.id %}" class="btn" style="display: block; text-align: center; padding: 1rem; font-size: 1rem;">
-                See results →
-            </a>
+            <a href="{% url 'quiz_complete' lesson.id %}" class="btn btn-block">See results →</a>
         {% else %}
-            <a href="{% url 'lesson_quiz' lesson.id %}?q={{ next_index }}" class="btn" style="display: block; text-align: center; padding: 1rem; font-size: 1rem;">
-                Next →
-            </a>
+            <a href="{% url 'lesson_quiz' lesson.id %}?q={{ next_index }}" class="btn btn-block">Next →</a>
         {% endif %}
 
     {% else %}
-        <!-- Question state -->
-        <div style="background: #fff; border-radius: 8px; padding: 1.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1.5rem; text-align: center;">
-            <p style="font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">What does this mean?</p>
-            <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.35rem;">{{ phrase.original }}</p>
+        <div class="quiz-question-card">
+            <p class="quiz-question-label">What does this mean?</p>
+            <p class="quiz-question-phrase">{{ phrase.original }}</p>
             {% if phrase.pronunciation %}
-                <p style="font-size: 0.9rem; color: #bbb; font-style: italic;">{{ phrase.pronunciation }}</p>
+                <p class="quiz-question-pronunciation">{{ phrase.pronunciation }}</p>
             {% endif %}
         </div>
 
@@ -69,10 +58,9 @@
             {% csrf_token %}
             <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
             <input type="hidden" name="correct" value="{{ phrase.translation }}">
-            <div style="display: grid; gap: 0.75rem;">
+            <div class="quiz-choices">
                 {% for choice in choices %}
-                    <button type="submit" name="chosen" value="{{ choice }}"
-                        style="width: 100%; padding: 1rem 1.25rem; background: #1a1a1a; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; cursor: pointer; text-align: left; transition: border-color 0.15s;">
+                    <button type="submit" name="chosen" value="{{ choice }}" class="quiz-choice">
                         {{ choice }}
                     </button>
                 {% endfor %}

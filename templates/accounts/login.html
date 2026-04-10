@@ -3,28 +3,23 @@
 {% block title %}Log In — Speak Easy{% endblock %}
 
 {% block content %}
-<div class="card" style="max-width: 400px; margin: 0 auto;">
-    <h1 style="font-size: 1.6rem; margin-bottom: 0.25rem;">Welcome back</h1>
-    <p style="color: #888; margin-bottom: 1.5rem; font-size: 0.95rem;">Log in to continue learning.</p>
+<div class="card card-narrow auth-card">
+    <h1>Welcome back</h1>
+    <p class="auth-subtitle">Log in to continue learning.</p>
 
     {% if form.non_field_errors %}
-        <div style="background: #fdecea; color: #c0392b; padding: 0.75rem 1rem; border-radius: 4px; margin-bottom: 1rem; font-size: 0.9rem;">
-            {{ form.non_field_errors.0 }}
-        </div>
+        <div class="auth-error">{{ form.non_field_errors.0 }}</div>
     {% endif %}
 
     <form method="post">
         {% csrf_token %}
-
         <label for="{{ form.username.id_for_label }}">Username</label>
         {{ form.username }}
-
         <label for="{{ form.password.id_for_label }}">Password</label>
         {{ form.password }}
-
-        <button type="submit" style="width: 100%; margin-top: 0.5rem;">Log in</button>
+        <button type="submit" class="btn-full">Log in</button>
     </form>
 
-    <p class="link-row" style="text-align: center;">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+    <p class="link-row link-row-center">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 {% endblock %}

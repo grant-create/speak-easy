@@ -3,35 +3,31 @@
 {% block title %}Practice Complete — {{ lesson.title }}{% endblock %}
 
 {% block content %}
-<div style="max-width: 480px; margin: 0 auto; text-align: center;">
+<div class="quiz-complete">
 
-    <div style="font-size: 4rem; margin-bottom: 1rem;">
+    <div class="quiz-complete-emoji">
         {% if score_percent == 100 %}🏆
         {% elif score_percent >= 70 %}⭐
         {% else %}💪
         {% endif %}
     </div>
 
-    <h1 style="margin-bottom: 0.5rem;">
+    <h1>
         {% if score_percent == 100 %}Perfect!
         {% elif score_percent >= 70 %}Nice work!
         {% else %}Keep it up!
         {% endif %}
     </h1>
-    <p style="color: #666; margin-bottom: 2rem;">{{ lesson.title }} complete</p>
+    <p class="quiz-complete-subtitle">{{ lesson.title }} complete</p>
 
-    <div class="card" style="margin-bottom: 2rem;">
-        <p style="font-size: 3rem; font-weight: bold; color: #27ae60; margin-bottom: 0.25rem;">{{ correct }}/{{ total }}</p>
-        <p style="color: #888;">correct answers</p>
+    <div class="card score-card">
+        <p class="score-number">{{ correct }}/{{ total }}</p>
+        <p class="score-label">correct answers</p>
     </div>
 
-    <div style="display: grid; gap: 0.75rem;">
-        <a href="{% url 'lesson_quiz' lesson.id %}?restart=1" class="btn" style="display: block; text-align: center; padding: 0.9rem; background: #fff; color: #2c3e50; border: 2px solid #2c3e50;">
-            Try again
-        </a>
-        <a href="{% url 'lesson_list' %}" class="btn" style="display: block; text-align: center; padding: 0.9rem;">
-            Back to lessons
-        </a>
+    <div class="quiz-complete-actions">
+        <a href="{% url 'lesson_quiz' lesson.id %}?restart=1" class="btn btn-outline btn-block">Try again</a>
+        <a href="{% url 'lesson_list' %}" class="btn btn-block">Back to lessons</a>
     </div>
 
 </div>

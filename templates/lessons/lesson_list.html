@@ -3,32 +3,33 @@
 {% block title %}{{ language.flag }} {{ language.name }} Lessons — Speak Easy{% endblock %}
 
 {% block content %}
-<p style="margin-bottom: 0.75rem;"><a href="{% url 'profile' %}" style="color: #666; text-decoration: none;">← Back to profile</a></p>
-<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem;">
+<a href="{% url 'profile' %}" class="back-link">← Back to profile</a>
+
+<div class="lesson-list-header">
     <h1>{{ language.flag }} {{ language.name }}</h1>
-    <span style="font-size: 0.9rem; color: #888;">{{ completed_count }} / {{ total_count }} complete</span>
+    <span class="lesson-count">{{ completed_count }} / {{ total_count }} complete</span>
 </div>
 
 {% if total_count %}
-    <div style="background: #e9ecef; border-radius: 99px; height: 6px; margin-bottom: 1.5rem; overflow: hidden;">
-        <div style="background: #27ae60; height: 100%; width: {% widthratio completed_count total_count 100 %}%; transition: width 0.3s;"></div>
+    <div class="progress-track">
+        <div class="progress-fill" style="width: {% widthratio completed_count total_count 100 %}%;"></div>
     </div>
 {% endif %}
 
 {% if lessons %}
-    <div style="display: grid; gap: 0.75rem;">
+    <div class="lesson-grid">
         {% for lesson in lessons %}
-                <a href="{% url 'lesson_detail' lesson.id %}" style="text-decoration: none; color: inherit;">
-                <div style="background: #fff; padding: 1rem 1.25rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; {% if lesson.id in completed_ids %}opacity: 0.6;{% endif %}">
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <a href="{% url 'lesson_detail' lesson.id %}" class="lesson-link">
+                <div class="lesson-card{% if lesson.id in completed_ids %} completed{% endif %}">
+                    <div class="lesson-card-left">
                         {% if lesson.id in completed_ids %}
-                            <span style="color: #27ae60; font-size: 1.1rem;">✓</span>
+                            <span class="lesson-check">✓</span>
                         {% else %}
-                            <span style="color: #ccc; font-size: 0.8rem; min-width: 1rem; text-align: center;">{{ lesson.order }}</span>
+                            <span class="lesson-order">{{ lesson.order }}</span>
                         {% endif %}
                         <strong>{{ lesson.title }}</strong>
                     </div>
-                    <span style="color: #ccc;">›</span>
+                    <span class="lesson-arrow">›</span>
                 </div>
             </a>
         {% endfor %}

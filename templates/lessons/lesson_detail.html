@@ -3,47 +3,41 @@
 {% block title %}{{ lesson.title }} — Speak Easy{% endblock %}
 
 {% block content %}
-<p style="margin-bottom: 0.5rem;"><a href="{% url 'lesson_list' %}" style="color: #666; text-decoration: none;">← Back to lessons</a></p>
-<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
-    <h1 style="margin: 0;">{{ lesson.title }}</h1>
+<a href="{% url 'lesson_list' %}" class="back-link">← Back to lessons</a>
+
+<div class="lesson-detail-header">
+    <h1>{{ lesson.title }}</h1>
     {% if is_completed %}
-        <span style="background: #d4edda; color: #155724; padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.85rem;">✓ Completed</span>
+        <span class="completed-badge">✓ Completed</span>
     {% endif %}
 </div>
 
 {% for phrase in phrases %}
-    <div style="background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem;">
-        <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.2rem;">{{ phrase.original }}</p>
+    <div class="phrase-card">
+        <p class="phrase-original">{{ phrase.original }}</p>
         {% if phrase.pronunciation %}
-            <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;"><span style="font-style: normal; font-weight: bold;">Pronunciation:</span> {{ phrase.pronunciation }}</p>
+            <p class="phrase-pronunciation"><strong>Pronunciation:</strong> {{ phrase.pronunciation }}</p>
         {% endif %}
-        <p style="color: #555; margin-bottom: {% if phrase.word_breakdown or phrase.example %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
+        <p class="phrase-translation{% if not phrase.word_breakdown and not phrase.example %} last{% endif %}">{{ phrase.translation }}</p>
         {% if phrase.word_breakdown %}
-            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: {% if phrase.example %}0.75rem{% else %}0{% endif %};">
+            <div class="word-breakdown{% if not phrase.example %} last{% endif %}">
                 {% for item in phrase.word_breakdown %}
-                    <span style="background: #f0f4f8; border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.82rem;">
-                        <span style="font-weight: bold;">{{ item.word }}</span>
-                        <span style="color: #888;"> — {{ item.meaning }}</span>
-                    </span>
+                    <span class="word-chip"><strong>{{ item.word }}</strong> <span>— {{ item.meaning }}</span></span>
                 {% endfor %}
             </div>
         {% endif %}
         {% if phrase.example %}
-            <p style="font-size: 0.88rem; color: #888; border-top: 1px solid #f0f0f0; padding-top: 0.6rem;">{{ phrase.example }}</p>
+            <p class="phrase-example">{{ phrase.example }}</p>
         {% endif %}
     </div>
 {% empty %}
     <p>No phrases in this lesson yet.</p>
 {% endfor %}
 
-<div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-    <a href="{% url 'lesson_quiz' lesson.id %}" class="btn" style="background: #27ae60; padding: 0.9rem 2.5rem; font-size: 1rem;">
-        Start practice →
-    </a>
+<div class="lesson-actions">
+    <a href="{% url 'lesson_quiz' lesson.id %}" class="btn btn-practice">Start practice →</a>
     {% if is_completed %}
-        <a href="{% url 'lesson_list' %}" class="btn" style="background: #fff; color: #2c3e50; border: 2px solid #2c3e50;">
-            Back to lessons
-        </a>
+        <a href="{% url 'lesson_list' %}" class="btn btn-outline">Back to lessons</a>
     {% endif %}
 </div>
 {% endblock %}

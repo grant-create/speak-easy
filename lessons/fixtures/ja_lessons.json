@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 37, "fields": {"language": 6, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 38, "fields": {"language": 6, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 39, "fields": {"language": 6, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 40, "fields": {"language": 6, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 41, "fields": {"language": 6, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 42, "fields": {"language": 6, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 174, "fields": {"lesson": 37, "original": "水をください。", "pronunciation": "mizu o kudasai", "translation": "Water, please.", "example": "'Kudasai' = please give me. Pattern: [thing] + を + ください works for ordering anything.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 175, "fields": {"lesson": 37, "original": "英語を話せますか？", "pronunciation": "eego o hanasemasu ka", "translation": "Do you speak English?", "example": "Questions end with 'か (ka)'. No change in word order needed.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 176, "fields": {"lesson": 37, "original": "わかりません。", "pronunciation": "wakarimasen", "translation": "I don't understand.", "example": "'-masen' makes verbs negative in polite form. 'Wakarimasu' = I understand.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 177, "fields": {"lesson": 38, "original": "こんにちは", "pronunciation": "kon-nee-chee-wah", "translation": "Hello (daytime)", "example": "Morning: 'おはようございます (ohayou gozaimasu)'. Evening: 'こんばんは (konbanwa)'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 178, "fields": {"lesson": 38, "original": "さようなら", "pronunciation": "sah-yoh-nah-rah", "translation": "Goodbye (formal)", "example": "Casual and very common: 'じゃね (ja ne)' or 'またね (mata ne)' — see you later.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 179, "fields": {"lesson": 38, "original": "おねがいします", "pronunciation": "oh-neh-gai-shi-mas", "translation": "Please (request)", "example": "Used when asking a favour. 'ください (kudasai)' is for requesting objects.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 180, "fields": {"lesson": 38, "original": "ありがとうございます", "pronunciation": "ah-ree-gah-toh goh-zai-mas", "translation": "Thank you (formal)", "example": "Casual: 'ありがとう (arigatou)'. Response: 'どういたしまして (dou itashimashite)'.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 181, "fields": {"lesson": 38, "original": "お元気ですか？", "pronunciation": "oh-gen-kee dess-kah", "translation": "How are you? (formal)", "example": "Casual: '元気？ (genki?)'. Response: '元気です、ありがとう。 (genki desu, arigatou.)'", "order": 5}},
+  {"model": "lessons.phrase", "pk": 182, "fields": {"lesson": 38, "original": "元気です、ありがとう。", "pronunciation": "gen-kee dess, ah-ree-gah-toh", "translation": "I'm fine, thank you.", "example": "Add 'あなたは？ (anata wa?)' — And you? — to be polite.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 183, "fields": {"lesson": 38, "original": "すみません", "pronunciation": "soo-mee-mah-sen", "translation": "Excuse me / Sorry", "example": "The most useful word in Japan. Gets attention, apologises, and expresses gratitude all at once.", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 184, "fields": {"lesson": 39, "original": "これ / あれ", "pronunciation": "koh-reh / ah-reh", "translation": "this / that (over there)", "example": "'これをください。' (This one, please.) 'それ (sore)' = that near you.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 185, "fields": {"lesson": 39, "original": "ここ / あそこ", "pronunciation": "koh-koh / ah-soh-koh", "translation": "here / over there", "example": "'ここにあります。' (It's here.) 'そこ (soko)' = there near you.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 186, "fields": {"lesson": 39, "original": "この / あの", "pronunciation": "koh-noh / ah-noh", "translation": "this ~ / that ~ (modifier)", "example": "'このバッグ' (this bag). 'その (sono)' = that ~ near you. Always followed by a noun.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 187, "fields": {"lesson": 40, "original": "です / います / あります", "pronunciation": "dess / ee-mas / ah-ri-mas", "translation": "to be", "example": "'です' for identity. 'います' for living things. 'あります' for objects. 'トイレはどこですか？' (Where is the toilet?)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 188, "fields": {"lesson": 40, "original": "持っています", "pronunciation": "mot-teh ee-mas", "translation": "to have", "example": "'かさを持っています。' (I have an umbrella.) Lit. 'am holding'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 189, "fields": {"lesson": 40, "original": "〜たいです", "pronunciation": "~tai dess", "translation": "to want to do", "example": "'食べたいです。' (I want to eat.) Attach 'たい' to the verb stem.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 190, "fields": {"lesson": 40, "original": "好きです", "pronunciation": "soo-kee dess", "translation": "to like", "example": "'寿司が好きです。' (I like sushi.) Lit. 'Sushi is liked.'", "order": 4}},
+  {"model": "lessons.phrase", "pk": 191, "fields": {"lesson": 40, "original": "知っています / わかります", "pronunciation": "shit-teh ee-mas / wah-kah-ri-mas", "translation": "to know / to understand", "example": "'知っています' = I know (a fact). 'わかります' = I understand.", "order": 5}},
+  {"model": "lessons.phrase", "pk": 192, "fields": {"lesson": 40, "original": "行きます", "pronunciation": "ee-kee-mas", "translation": "to go", "example": "'ホテルに行きます。' (I'm going to the hotel.)", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 193, "fields": {"lesson": 41, "original": "〜をください", "pronunciation": "~o kudasai", "translation": "Please give me ~", "example": "'コーヒーをください。' (Coffee, please.) Essential for ordering food and drinks.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 194, "fields": {"lesson": 41, "original": "〜をもらえますか？", "pronunciation": "~o moraemasu ka", "translation": "Could I get ~?", "example": "'メニューをもらえますか？' (Could I get a menu?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 195, "fields": {"lesson": 41, "original": "〜はどこですか？", "pronunciation": "~wa doko dess ka", "translation": "Where is ~?", "example": "'トイレはどこですか？' (Where is the toilet?) The most asked question in Japan.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 196, "fields": {"lesson": 41, "original": "〜がありますか？", "pronunciation": "~ga arimasu ka", "translation": "Do you have ~?", "example": "'英語のメニューがありますか？' (Do you have an English menu?)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 197, "fields": {"lesson": 41, "original": "〜は日本語でなんと言いますか？", "pronunciation": "~wa nihongo de nanto iimasu ka", "translation": "How do you say ~ in Japanese?", "example": "Long but very useful. Point at something and ask.", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 198, "fields": {"lesson": 42, "original": "わかりません。", "pronunciation": "wah-kah-ree-mah-sen", "translation": "I don't understand.", "example": "Say this and most Japanese people will try to help you in other ways.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 199, "fields": {"lesson": 42, "original": "もう一度言ってください。", "pronunciation": "moh ee-chee-doh it-teh koo-dah-sai", "translation": "Please say that again.", "example": "Polite and clear. People will always oblige.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 200, "fields": {"lesson": 42, "original": "ゆっくり話してください。", "pronunciation": "yook-koo-ree hah-nah-shee-teh koo-dah-sai", "translation": "Please speak slowly.", "example": "Japanese people are very accommodating with this request.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 201, "fields": {"lesson": 42, "original": "どういう意味ですか？", "pronunciation": "doh-ee-yoo ee-mee dess-kah", "translation": "What does that mean?", "example": "Also useful: '〜って何ですか？ (~tte nan dess ka?)' — What is ~?", "order": 4}},
+  {"model": "lessons.phrase", "pk": 202, "fields": {"lesson": 42, "original": "助けてください。", "pronunciation": "tah-soo-keh-teh koo-dah-sai", "translation": "Please help me.", "example": "In an emergency, 'たすけて！ (tasukete!)' — said urgently — is also understood.", "order": 5}}
+]

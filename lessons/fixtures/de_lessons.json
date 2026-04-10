@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 19, "fields": {"language": 3, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 20, "fields": {"language": 3, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 21, "fields": {"language": 3, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 22, "fields": {"language": 3, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 23, "fields": {"language": 3, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 24, "fields": {"language": 3, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 87, "fields": {"lesson": 19, "original": "Ich möchte Wasser.", "pronunciation": "ikh MUKH-tuh VAH-ser", "translation": "I would like water.", "example": "'Möchte' is the polite form of 'wollen' (to want). Use it instead of 'Ich will' in shops.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 88, "fields": {"lesson": 19, "original": "Sprechen Sie Englisch?", "pronunciation": "SHPREH-khen zee ENG-lish", "translation": "Do you speak English?", "example": "Formal 'Sie' form. The verb comes second in German statements, but can lead in questions.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 89, "fields": {"lesson": 19, "original": "Ich verstehe nicht.", "pronunciation": "ikh fer-SHTAY-uh nikht", "translation": "I don't understand.", "example": "Negation with 'nicht' goes after the verb. 'Nicht' = not.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 90, "fields": {"lesson": 20, "original": "Hallo / Guten Tag", "pronunciation": "HAH-loh / GOO-ten tahk", "translation": "Hello / Good day", "example": "'Hallo' is casual. 'Guten Tag' is formal and used during the day.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 91, "fields": {"lesson": 20, "original": "Auf Wiedersehen", "pronunciation": "owf VEE-der-zay-en", "translation": "Goodbye", "example": "Lit. 'until seeing again'. Casual: 'Tschüss'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 92, "fields": {"lesson": 20, "original": "Bitte", "pronunciation": "BIT-tuh", "translation": "Please / You're welcome", "example": "'Bitte' works for both please and you're welcome. Context makes it clear.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 93, "fields": {"lesson": 20, "original": "Danke", "pronunciation": "DAHN-kuh", "translation": "Thank you", "example": "'Danke schön' = thank you very much. Response: 'Bitte' or 'Gern geschehen'.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 94, "fields": {"lesson": 20, "original": "Wie geht es Ihnen?", "pronunciation": "vee gayt es EE-nen", "translation": "How are you? (formal)", "example": "Casual: 'Wie geht's?' Response: 'Gut, danke.' (Good, thanks.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 95, "fields": {"lesson": 20, "original": "Gut, danke.", "pronunciation": "goot, DAHN-kuh", "translation": "Good, thank you.", "example": "Standard response. Add 'Und Ihnen?' (And you?) to be polite.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 96, "fields": {"lesson": 20, "original": "Entschuldigung", "pronunciation": "ent-SHOOL-di-goong", "translation": "Excuse me / Sorry", "example": "Works for both getting attention and apologising. A very useful word.", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 97, "fields": {"lesson": 21, "original": "dies / das", "pronunciation": "dees / dahs", "translation": "this / that", "example": "'Ich nehme das.' (I'll take that.) Gender affects the article: dieser/diese/dieses.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 98, "fields": {"lesson": 21, "original": "hier / dort", "pronunciation": "heer / dort", "translation": "here / there", "example": "'Ich bin hier.' (I'm here.) 'Es ist dort.' (It's over there.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 99, "fields": {"lesson": 21, "original": "diesen hier / jenen dort", "pronunciation": "DEE-zen heer / YAY-nen dort", "translation": "this one / that one", "example": "'Ich möchte diesen hier.' (I'd like this one.)", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 100, "fields": {"lesson": 22, "original": "sein", "pronunciation": "zyne", "translation": "to be", "example": "'Ich bin müde.' (I am tired.) 'Er ist Arzt.' (He is a doctor.)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 101, "fields": {"lesson": 22, "original": "haben", "pronunciation": "HAH-ben", "translation": "to have", "example": "'Ich habe Hunger.' (I'm hungry — lit. I have hunger.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 102, "fields": {"lesson": 22, "original": "wollen / möchten", "pronunciation": "VOL-en / MUKH-ten", "translation": "to want", "example": "'Ich will' is blunt. 'Ich möchte' (I would like) is more polite for everyday use.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 103, "fields": {"lesson": 22, "original": "mögen / gern haben", "pronunciation": "MUH-gen / gehrn HAH-ben", "translation": "to like", "example": "'Ich mag das.' (I like that.) 'Ich esse gern Pizza.' (I like eating pizza.)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 104, "fields": {"lesson": 22, "original": "wissen / kennen", "pronunciation": "VIS-en / KEN-en", "translation": "to know", "example": "'Ich weiß es.' (I know it — a fact.) 'Ich kenne Berlin.' (I know Berlin — familiarity.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 105, "fields": {"lesson": 22, "original": "gehen / fahren", "pronunciation": "GAY-en / FAH-ren", "translation": "to go", "example": "'Ich gehe zum Hotel.' (I'm walking to the hotel.) 'Ich fahre nach Berlin.' (I'm going to Berlin by vehicle.)", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 106, "fields": {"lesson": 23, "original": "Ich möchte...", "pronunciation": "ikh MUKH-tuh", "translation": "I would like...", "example": "'Ich möchte einen Kaffee, bitte.' (I'd like a coffee, please.)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 107, "fields": {"lesson": 23, "original": "Können Sie mir ... geben?", "pronunciation": "KUN-en zee meer GAY-ben", "translation": "Can you give me...?", "example": "'Können Sie mir die Rechnung geben?' (Can you give me the bill?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 108, "fields": {"lesson": 23, "original": "Wo ist...?", "pronunciation": "voh ist", "translation": "Where is...?", "example": "'Wo ist die Toilette?' (Where is the toilet?)", "order": 3}},
+  {"model": "lessons.phrase", "pk": 109, "fields": {"lesson": 23, "original": "Haben Sie...?", "pronunciation": "HAH-ben zee", "translation": "Do you have...?", "example": "'Haben Sie freie Zimmer?' (Do you have free rooms?)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 110, "fields": {"lesson": 23, "original": "Wie sagt man...?", "pronunciation": "vee zahkt mahn", "translation": "How do you say...?", "example": "'Wie sagt man 'thank you' auf Deutsch?' (How do you say 'thank you' in German?)", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 111, "fields": {"lesson": 24, "original": "Ich verstehe nicht.", "pronunciation": "ikh fer-SHTAY-uh nikht", "translation": "I don't understand.", "example": "Germans appreciate any effort to speak German — say this freely.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 112, "fields": {"lesson": 24, "original": "Können Sie das wiederholen?", "pronunciation": "KUN-en zee dahs VEE-der-hoh-len", "translation": "Can you repeat that?", "example": "Polite and clear.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 113, "fields": {"lesson": 24, "original": "Langsamer, bitte.", "pronunciation": "LAHNG-zah-mer, BIT-tuh", "translation": "Slower, please.", "example": "German can feel fast with its long compound words — don't hesitate to ask.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 114, "fields": {"lesson": 24, "original": "Was bedeutet das?", "pronunciation": "vahs buh-DOY-tet dahs", "translation": "What does this mean?", "example": "Point at a sign, word, or menu item.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 115, "fields": {"lesson": 24, "original": "Können Sie mir helfen?", "pronunciation": "KUN-en zee meer HEL-fen", "translation": "Can you help me?", "example": "Universally understood and well received.", "order": 5}}
+]

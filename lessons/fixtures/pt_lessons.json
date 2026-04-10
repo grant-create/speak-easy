@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 31, "fields": {"language": 5, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 32, "fields": {"language": 5, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 33, "fields": {"language": 5, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 34, "fields": {"language": 5, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 35, "fields": {"language": 5, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 36, "fields": {"language": 5, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 145, "fields": {"lesson": 31, "original": "Eu quero água.", "pronunciation": "eh-oo KEH-roo AH-gwah", "translation": "I want water.", "example": "Brazilian Portuguese. European Portuguese sounds slightly different but the words are the same.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 146, "fields": {"lesson": 31, "original": "Você fala inglês?", "pronunciation": "voh-SAY FAH-lah een-GLESH", "translation": "Do you speak English?", "example": "Brazilian form. In Portugal: 'Fala inglês?' (subject dropped more often).", "order": 2}},
+  {"model": "lessons.phrase", "pk": 147, "fields": {"lesson": 31, "original": "Não entendo.", "pronunciation": "nown en-TEN-doo", "translation": "I don't understand.", "example": "'Não' = no / not. Goes before the verb to negate.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 148, "fields": {"lesson": 32, "original": "Olá", "pronunciation": "oh-LAH", "translation": "Hello", "example": "Universal. In Brazil 'Oi' is extremely common and casual.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 149, "fields": {"lesson": 32, "original": "Tchau / Adeus", "pronunciation": "chow / ah-DEH-oosh", "translation": "Bye / Goodbye", "example": "'Tchau' (from Italian 'ciao') is everyday casual. 'Adeus' is more final.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 150, "fields": {"lesson": 32, "original": "Por favor", "pronunciation": "por fah-VOR", "translation": "Please", "example": "Same as Spanish. Goes at end of requests: 'Uma água, por favor.'", "order": 3}},
+  {"model": "lessons.phrase", "pk": 151, "fields": {"lesson": 32, "original": "Obrigado / Obrigada", "pronunciation": "oh-bree-GAH-doo / oh-bree-GAH-dah", "translation": "Thank you", "example": "Men say 'Obrigado', women say 'Obrigada'. Response: 'De nada'.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 152, "fields": {"lesson": 32, "original": "Como vai?", "pronunciation": "KOH-moo vai", "translation": "How are you?", "example": "Casual. Formal: 'Como está?' Response: 'Bem, obrigado/a.'", "order": 5}},
+  {"model": "lessons.phrase", "pk": 153, "fields": {"lesson": 32, "original": "Bem, obrigado.", "pronunciation": "bayn, oh-bree-GAH-doo", "translation": "Fine, thank you.", "example": "Add 'E você?' (And you?) to keep the conversation going.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 154, "fields": {"lesson": 32, "original": "Com licença", "pronunciation": "kom lee-SEN-sah", "translation": "Excuse me", "example": "To get past someone or get attention. 'Desculpe' for apologies.", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 155, "fields": {"lesson": 33, "original": "isto / isso / aquilo", "pronunciation": "EES-too / EES-soo / ah-KEE-loo", "translation": "this / that / that (over there)", "example": "Portuguese has three levels of distance. 'Isso' is nearby, 'aquilo' is farther.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 156, "fields": {"lesson": 33, "original": "aqui / ali / lá", "pronunciation": "ah-KEE / ah-LEE / lah", "translation": "here / there / over there", "example": "'Estou aqui.' (I'm here.) 'Está lá.' (It's over there.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 157, "fields": {"lesson": 33, "original": "este / esse", "pronunciation": "ES-teh / ES-seh", "translation": "this one / that one", "example": "'Quero este aqui.' (I want this one here.)", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 158, "fields": {"lesson": 34, "original": "ser / estar", "pronunciation": "sehr / es-TAR", "translation": "to be", "example": "'Sou americano.' (I am American.) 'Estou cansado.' (I am tired.) Same distinction as Spanish.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 159, "fields": {"lesson": 34, "original": "ter", "pronunciation": "tehr", "translation": "to have", "example": "'Tenho fome.' (I'm hungry — lit. I have hunger.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 160, "fields": {"lesson": 34, "original": "querer", "pronunciation": "keh-REHR", "translation": "to want", "example": "'Quero um café.' (I want a coffee.)", "order": 3}},
+  {"model": "lessons.phrase", "pk": 161, "fields": {"lesson": 34, "original": "gostar", "pronunciation": "goos-TAR", "translation": "to like", "example": "'Gosto disto.' (I like this.) Followed by 'de': 'Gosto de café.'", "order": 4}},
+  {"model": "lessons.phrase", "pk": 162, "fields": {"lesson": 34, "original": "saber / conhecer", "pronunciation": "sah-BEHR / kohn-yeh-SEHR", "translation": "to know", "example": "'Sei falar português.' (I know how to speak Portuguese.) 'Conheço Lisboa.' (I know Lisbon.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 163, "fields": {"lesson": 34, "original": "ir", "pronunciation": "eer", "translation": "to go", "example": "'Vou ao hotel.' (I'm going to the hotel.)", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 164, "fields": {"lesson": 35, "original": "Eu gostaria de...", "pronunciation": "eh-oo gos-tah-REE-ah deh", "translation": "I would like...", "example": "'Eu gostaria de uma mesa, por favor.' Polite and widely used.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 165, "fields": {"lesson": 35, "original": "Pode me dar...?", "pronunciation": "POH-deh meh dar", "translation": "Can you give me...?", "example": "'Pode me dar a conta?' (Can you give me the bill?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 166, "fields": {"lesson": 35, "original": "Onde fica...?", "pronunciation": "ON-deh FEE-kah", "translation": "Where is...?", "example": "'Onde fica o banheiro?' (Where is the bathroom?) 'Banheiro' is Brazilian, 'casa de banho' is European.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 167, "fields": {"lesson": 35, "original": "Tem...?", "pronunciation": "tayn", "translation": "Do you have...?", "example": "'Tem quartos disponíveis?' (Do you have rooms available?)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 168, "fields": {"lesson": 35, "original": "Como se diz...?", "pronunciation": "KOH-moo seh deez", "translation": "How do you say...?", "example": "'Como se diz 'thank you' em português?'", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 169, "fields": {"lesson": 36, "original": "Não entendo.", "pronunciation": "nown en-TEN-doo", "translation": "I don't understand.", "example": "Brazilians are warm and patient with language learners.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 170, "fields": {"lesson": 36, "original": "Pode repetir?", "pronunciation": "POH-deh heh-peh-TEER", "translation": "Can you repeat that?", "example": "Polite and effective.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 171, "fields": {"lesson": 36, "original": "Mais devagar, por favor.", "pronunciation": "maish deh-vah-GAR, por fah-VOR", "translation": "Slower, please.", "example": "Brazilian Portuguese can be quick and musical — asking to slow down is very normal.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 172, "fields": {"lesson": 36, "original": "O que significa isso?", "pronunciation": "oo keh seeg-NEE-fee-kah EE-soo", "translation": "What does this mean?", "example": "Point at a word, sign, or item.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 173, "fields": {"lesson": 36, "original": "Pode me ajudar?", "pronunciation": "POH-deh meh ah-zhoo-DAR", "translation": "Can you help me?", "example": "Brazilians are generally very helpful and friendly.", "order": 5}}
+]

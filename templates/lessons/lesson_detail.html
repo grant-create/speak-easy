@@ -17,7 +17,17 @@
         {% if phrase.pronunciation %}
             <p style="font-size: 0.85rem; color: #aaa; font-style: italic; margin-bottom: 0.4rem;"><span style="font-style: normal; font-weight: bold;">Pronunciation:</span> {{ phrase.pronunciation }}</p>
         {% endif %}
-        <p style="color: #555; margin-bottom: {% if phrase.example %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
+        <p style="color: #555; margin-bottom: {% if phrase.word_breakdown or phrase.example %}0.75rem{% else %}0{% endif %};">{{ phrase.translation }}</p>
+        {% if phrase.word_breakdown %}
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: {% if phrase.example %}0.75rem{% else %}0{% endif %};">
+                {% for item in phrase.word_breakdown %}
+                    <span style="background: #f0f4f8; border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.82rem;">
+                        <span style="font-weight: bold;">{{ item.word }}</span>
+                        <span style="color: #888;"> — {{ item.meaning }}</span>
+                    </span>
+                {% endfor %}
+            </div>
+        {% endif %}
         {% if phrase.example %}
             <p style="font-size: 0.88rem; color: #888; border-top: 1px solid #f0f0f0; padding-top: 0.6rem;">{{ phrase.example }}</p>
         {% endif %}

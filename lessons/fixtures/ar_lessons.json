@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 55, "fields": {"language": 9, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 56, "fields": {"language": 9, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 57, "fields": {"language": 9, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 58, "fields": {"language": 9, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 59, "fields": {"language": 9, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 60, "fields": {"language": 9, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 261, "fields": {"lesson": 55, "original": "أريد ماء.", "pronunciation": "u-REE-du maa", "translation": "I want water.", "example": "Modern Standard Arabic (MSA). Spoken dialects vary widely but these phrases are widely understood.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 262, "fields": {"lesson": 55, "original": "هل تتحدث الإنجليزية؟", "pronunciation": "hal ta-ta-HAD-dath al-in-gli-ZEE-ya", "translation": "Do you speak English?", "example": "'هل (hal)' starts yes/no questions. To a woman: 'هل تتحدثين (hal ta-ta-HAD-dath-een)'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 263, "fields": {"lesson": 55, "original": "لا أفهم.", "pronunciation": "laa AF-ham", "translation": "I don't understand.", "example": "'لا (laa)' = no / not. Place before the verb to negate.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 264, "fields": {"lesson": 56, "original": "مرحبا", "pronunciation": "mar-HA-ban", "translation": "Hello", "example": "Response: 'أهلاً وسهلاً (AH-lan wa-SAH-lan)' or simply 'أهلاً (AH-lan)'. Both mean 'welcome'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 265, "fields": {"lesson": 56, "original": "مع السلامة", "pronunciation": "ma-as-sa-LAA-ma", "translation": "Goodbye (lit. go with safety)", "example": "Said to the person leaving. If you're leaving you might say 'في أمان الله (fi a-MAN al-lah)' — go in God's safety.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 266, "fields": {"lesson": 56, "original": "من فضلك", "pronunciation": "min FAD-lak", "translation": "Please (to a man)", "example": "To a woman: 'من فضلك (min FAD-lik)'. A small but appreciated distinction.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 267, "fields": {"lesson": 56, "original": "شكراً", "pronunciation": "SHUK-ran", "translation": "Thank you", "example": "Response: 'عفواً (AF-wan)' — you're welcome. Also means 'excuse me', context-dependent.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 268, "fields": {"lesson": 56, "original": "كيف حالك؟", "pronunciation": "KAY-fa HAA-lak", "translation": "How are you? (to a man)", "example": "To a woman: 'كيف حالكِ (KAY-fa HAA-lik)'. Response: 'بخير، شكراً.' (Fine, thanks.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 269, "fields": {"lesson": 56, "original": "بخير، شكراً.", "pronunciation": "bi-KHAYR, SHUK-ran", "translation": "Fine, thank you.", "example": "Lit. 'in good'. A very natural and common response.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 270, "fields": {"lesson": 56, "original": "عفواً / آسف", "pronunciation": "AF-wan / AA-sif", "translation": "Excuse me / Sorry", "example": "'عفواً' for mild excuse me. 'آسف' for a more sincere apology.", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 271, "fields": {"lesson": 57, "original": "هذا / ذلك", "pronunciation": "HAA-tha / THAA-lik", "translation": "this / that", "example": "'أريد هذا.' (I want this.) For feminine: 'هذه / تلك (HAA-thih / TIL-k)'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 272, "fields": {"lesson": 57, "original": "هنا / هناك", "pronunciation": "HU-naa / hu-NAAK", "translation": "here / there", "example": "'أنا هنا.' (I'm here.) 'إنه هناك.' (It's there.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 273, "fields": {"lesson": 57, "original": "هذا الواحد / ذلك الواحد", "pronunciation": "HAA-tha al-WAA-hid / THAA-lik al-WAA-hid", "translation": "this one / that one", "example": "Point and say 'هذا من فضلك.' (This one, please.) Simple and effective.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 274, "fields": {"lesson": 58, "original": "كان / يكون", "pronunciation": "kaa-na / ya-KOON", "translation": "to be", "example": "Arabic often drops 'to be' in present tense: 'أنا طالب (ana TAA-lib)' = I am a student. No verb needed.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 275, "fields": {"lesson": 58, "original": "عنده / لديه", "pronunciation": "IN-da-hu / la-DAY-hi", "translation": "to have (he has)", "example": "'عندي ماء.' (I have water.) Arabic expresses 'have' as 'at me there is'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 276, "fields": {"lesson": 58, "original": "يريد", "pronunciation": "yu-REE-du", "translation": "to want", "example": "'أريد قهوة.' (I want coffee.) 'أريد (a-REE-du)' = I want.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 277, "fields": {"lesson": 58, "original": "يحب", "pronunciation": "yu-HIB-bu", "translation": "to like / to love", "example": "'أحب الأكل العربي.' (I love Arab food.) 'أحب (u-HIB-bu)' = I love/like.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 278, "fields": {"lesson": 58, "original": "يعرف / يعلم", "pronunciation": "ya-REF / ya-LAM", "translation": "to know", "example": "'أعرف (a-REF)' = I know (a person/place). 'أعلم (a-LAM)' = I know (a fact).", "order": 5}},
+  {"model": "lessons.phrase", "pk": 279, "fields": {"lesson": 58, "original": "يذهب", "pronunciation": "yath-HAB", "translation": "to go", "example": "'أذهب إلى الفندق.' (I'm going to the hotel.)", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 280, "fields": {"lesson": 59, "original": "أود...", "pronunciation": "a-WAD-du", "translation": "I would like...", "example": "'أود طاولة، من فضلك.' (I'd like a table, please.) More polite than 'أريد'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 281, "fields": {"lesson": 59, "original": "هل يمكنك أن تعطيني...؟", "pronunciation": "hal yum-KI-nu-ka an tu-TAY-nee", "translation": "Can you give me...?", "example": "'هل يمكنك أن تعطيني الفاتورة؟' (Can you give me the bill?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 282, "fields": {"lesson": 59, "original": "أين...؟", "pronunciation": "AY-na", "translation": "Where is...?", "example": "'أين الحمام؟' (Where is the bathroom?) Short and very useful.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 283, "fields": {"lesson": 59, "original": "هل عندك...؟", "pronunciation": "hal IN-da-ka", "translation": "Do you have...?", "example": "'هل عندك غرف شاغرة؟' (Do you have free rooms?)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 284, "fields": {"lesson": 59, "original": "كيف تقول...؟", "pronunciation": "KAY-fa ta-KOOL", "translation": "How do you say...?", "example": "'كيف تقول 'thank you' بالعربي؟'", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 285, "fields": {"lesson": 60, "original": "لا أفهم.", "pronunciation": "laa AF-ham", "translation": "I don't understand.", "example": "Arab people are very hospitable and will gladly help.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 286, "fields": {"lesson": 60, "original": "هل يمكنك التكرار؟", "pronunciation": "hal yum-KI-nu-ka at-tak-RAAR", "translation": "Can you repeat that?", "example": "Polite and effective.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 287, "fields": {"lesson": 60, "original": "تكلم ببطء من فضلك.", "pronunciation": "ta-KAL-lam bi-BUT-i min FAD-lak", "translation": "Speak slowly, please.", "example": "Arabic spoken at native speed takes time to adjust to.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 288, "fields": {"lesson": 60, "original": "ماذا يعني هذا؟", "pronunciation": "MAA-tha yaa-NEE HAA-tha", "translation": "What does this mean?", "example": "Point at text, a sign, or a word.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 289, "fields": {"lesson": 60, "original": "هل يمكنك مساعدتي؟", "pronunciation": "hal yum-KI-nu-ka mu-SAA-a-da-tee", "translation": "Can you help me?", "example": "Arab hospitality (كرم الضيافة) means people genuinely want to help.", "order": 5}}
+]

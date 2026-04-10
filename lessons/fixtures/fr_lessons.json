@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 13, "fields": {"language": 2, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 14, "fields": {"language": 2, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 15, "fields": {"language": 2, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 16, "fields": {"language": 2, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 17, "fields": {"language": 2, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 18, "fields": {"language": 2, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 58, "fields": {"lesson": 13, "original": "Je veux de l'eau.", "pronunciation": "zhuh vuh duh loh", "translation": "I want water.", "example": "French keeps the subject: 'Je veux' = 'I want'. Dropping it sounds unnatural.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 59, "fields": {"lesson": 13, "original": "Parlez-vous anglais?", "pronunciation": "par-lay voo ahn-GLAY", "translation": "Do you speak English?", "example": "Inversion (verb before subject) is the standard way to form questions in French.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 60, "fields": {"lesson": 13, "original": "Je ne comprends pas.", "pronunciation": "zhuh nuh kom-PRAHN pah", "translation": "I don't understand.", "example": "Negatives wrap the verb: ne ... pas. In spoken French, 'ne' is often dropped: 'Je comprends pas.'", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 61, "fields": {"lesson": 14, "original": "Bonjour", "pronunciation": "bohn-ZHOOR", "translation": "Hello / Good day", "example": "Used until evening. After ~6pm use 'Bonsoir'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 62, "fields": {"lesson": 14, "original": "Au revoir", "pronunciation": "oh ruh-VWAR", "translation": "Goodbye", "example": "Lit. 'until the seeing again'. Casual: 'Salut'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 63, "fields": {"lesson": 14, "original": "S'il vous plaît", "pronunciation": "seel voo PLAY", "translation": "Please", "example": "Formal. Casual (to friends): 's'il te plaît'.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 64, "fields": {"lesson": 14, "original": "Merci", "pronunciation": "mehr-SEE", "translation": "Thank you", "example": "Response: 'De rien' (you're welcome) or 'Je vous en prie' (formal).", "order": 4}},
+  {"model": "lessons.phrase", "pk": 65, "fields": {"lesson": 14, "original": "Comment allez-vous?", "pronunciation": "koh-mahn tah-lay VOO", "translation": "How are you? (formal)", "example": "Informal: 'Ça va?' — also doubles as the response: 'Ça va.' (I'm fine.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 66, "fields": {"lesson": 14, "original": "Bien, merci.", "pronunciation": "byan, mehr-SEE", "translation": "Fine, thank you.", "example": "Standard response. Add 'Et vous?' (And you?) to be polite.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 67, "fields": {"lesson": 14, "original": "Excusez-moi", "pronunciation": "ex-koo-zay MWAH", "translation": "Excuse me", "example": "To get attention or apologise. 'Pardon' also works and is quicker.", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 68, "fields": {"lesson": 15, "original": "ceci / cela", "pronunciation": "suh-SEE / suh-LAH", "translation": "this / that", "example": "'Je veux ceci.' (I want this.) In conversation 'ça' covers both: 'C'est quoi ça?' (What's that?)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 69, "fields": {"lesson": 15, "original": "ici / là", "pronunciation": "ee-SEE / lah", "translation": "here / there", "example": "'Je suis ici.' (I'm here.) 'C'est là.' (It's there.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 70, "fields": {"lesson": 15, "original": "celui-ci / celui-là", "pronunciation": "suh-lwee-SEE / suh-lwee-LAH", "translation": "this one / that one", "example": "'Je prends celui-ci.' (I'll take this one.)", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 71, "fields": {"lesson": 16, "original": "être", "pronunciation": "EH-truh", "translation": "to be", "example": "'Je suis américain.' (I am American.) 'Il est fatigué.' (He is tired.)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 72, "fields": {"lesson": 16, "original": "avoir", "pronunciation": "ah-VWAR", "translation": "to have", "example": "'J'ai faim.' (I'm hungry — lit. I have hunger.)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 73, "fields": {"lesson": 16, "original": "vouloir", "pronunciation": "voo-LWAR", "translation": "to want", "example": "'Je veux un café.' (I want a coffee.) Polite: 'Je voudrais...' (I would like...)", "order": 3}},
+  {"model": "lessons.phrase", "pk": 74, "fields": {"lesson": 16, "original": "aimer", "pronunciation": "ay-MAY", "translation": "to like / to love", "example": "'J'aime ça.' (I like that.) 'J'aime Paris.' (I love Paris.)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 75, "fields": {"lesson": 16, "original": "savoir / connaître", "pronunciation": "sah-VWAR / koh-NEH-truh", "translation": "to know", "example": "'Je sais parler français.' (I know how to speak French.) 'Je connais Paris.' (I know Paris.)", "order": 5}},
+  {"model": "lessons.phrase", "pk": 76, "fields": {"lesson": 16, "original": "aller", "pronunciation": "ah-LAY", "translation": "to go", "example": "'Je vais à l'hôtel.' (I'm going to the hotel.)", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 77, "fields": {"lesson": 17, "original": "Je voudrais...", "pronunciation": "zhuh voo-DRAY", "translation": "I would like...", "example": "'Je voudrais une table, s'il vous plaît.' Softer and more polite than 'je veux'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 78, "fields": {"lesson": 17, "original": "Pouvez-vous me donner...?", "pronunciation": "poo-vay voo muh doh-NAY", "translation": "Can you give me...?", "example": "'Pouvez-vous me donner l'addition?' (Can you give me the bill?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 79, "fields": {"lesson": 17, "original": "Où est...?", "pronunciation": "oo ay", "translation": "Where is...?", "example": "'Où est la salle de bain?' (Where is the bathroom?)", "order": 3}},
+  {"model": "lessons.phrase", "pk": 80, "fields": {"lesson": 17, "original": "Avez-vous...?", "pronunciation": "ah-vay VOO", "translation": "Do you have...?", "example": "'Avez-vous des chambres libres?' (Do you have rooms available?)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 81, "fields": {"lesson": 17, "original": "Comment dit-on...?", "pronunciation": "koh-mahn dee-TON", "translation": "How do you say...?", "example": "'Comment dit-on 'thank you' en français?' (How do you say 'thank you' in French?)", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 82, "fields": {"lesson": 18, "original": "Je ne comprends pas.", "pronunciation": "zhuh nuh kom-PRAHN pah", "translation": "I don't understand.", "example": "Say this and most French speakers will slow down and rephrase.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 83, "fields": {"lesson": 18, "original": "Pouvez-vous répéter?", "pronunciation": "poo-vay voo ray-pay-TAY", "translation": "Can you repeat that?", "example": "Polite and widely understood.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 84, "fields": {"lesson": 18, "original": "Plus lentement, s'il vous plaît.", "pronunciation": "ploo lahn-tuh-MAHN, seel voo PLAY", "translation": "Slower, please.", "example": "Essential in France where speech can be very fast.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 85, "fields": {"lesson": 18, "original": "Qu'est-ce que ça veut dire?", "pronunciation": "kess kuh sah vuh DEER", "translation": "What does this mean?", "example": "Point at a word or sign and ask.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 86, "fields": {"lesson": 18, "original": "Pouvez-vous m'aider?", "pronunciation": "poo-vay voo may-DAY", "translation": "Can you help me?", "example": "French people are very helpful once you make the effort to speak French.", "order": 5}}
+]

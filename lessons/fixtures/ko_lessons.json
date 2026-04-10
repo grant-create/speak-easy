@@ -1,0 +1,43 @@
+[
+  {"model": "lessons.lesson", "pk": 49, "fields": {"language": 8, "title": "Sentence Basics", "order": 1}},
+  {"model": "lessons.lesson", "pk": 50, "fields": {"language": 8, "title": "Core Social Phrases", "order": 2}},
+  {"model": "lessons.lesson", "pk": 51, "fields": {"language": 8, "title": "Pointing & Location", "order": 3}},
+  {"model": "lessons.lesson", "pk": 52, "fields": {"language": 8, "title": "High-Power Verbs", "order": 4}},
+  {"model": "lessons.lesson", "pk": 53, "fields": {"language": 8, "title": "Asking for Things", "order": 5}},
+  {"model": "lessons.lesson", "pk": 54, "fields": {"language": 8, "title": "Survival Phrases", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 232, "fields": {"lesson": 49, "original": "물 주세요.", "pronunciation": "mul ju-se-yo", "translation": "Water, please.", "example": "Korean is verb-final: Subject-Object-Verb. '주세요 (juseyo)' = please give me. Add any noun before it.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 233, "fields": {"lesson": 49, "original": "영어 할 줄 아세요?", "pronunciation": "yeong-eo hal jul a-se-yo", "translation": "Do you speak English?", "example": "Lit. 'English do you know how to do?' Korean questions use rising intonation, not word order changes.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 234, "fields": {"lesson": 49, "original": "이해 못 해요.", "pronunciation": "i-hae mot hae-yo", "translation": "I don't understand.", "example": "'못 (mot)' = cannot. Simpler alternative: '모르겠어요 (mo-reu-gess-eo-yo)' — I don't know.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 235, "fields": {"lesson": 50, "original": "안녕하세요", "pronunciation": "an-nyeong-ha-se-yo", "translation": "Hello (formal)", "example": "Works any time of day. Casual with friends: '안녕 (annyeong)'.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 236, "fields": {"lesson": 50, "original": "안녕히 가세요 / 안녕히 계세요", "pronunciation": "an-nyeong-hi ga-se-yo / an-nyeong-hi ge-se-yo", "translation": "Goodbye (to person leaving / staying)", "example": "Said to someone leaving: '안녕히 가세요'. Said by someone leaving: '안녕히 계세요'.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 237, "fields": {"lesson": 50, "original": "주세요", "pronunciation": "ju-se-yo", "translation": "Please (give me)", "example": "The most useful two syllables in Korea. [Item] + 주세요 = please give me [item].", "order": 3}},
+  {"model": "lessons.phrase", "pk": 238, "fields": {"lesson": 50, "original": "감사합니다", "pronunciation": "gam-sa-ham-ni-da", "translation": "Thank you (formal)", "example": "Casual: '고마워요 (go-ma-wo-yo)'. Response: '아니에요 (a-ni-e-yo)' — not at all.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 239, "fields": {"lesson": 50, "original": "어떻게 지내세요?", "pronunciation": "eo-tteo-ke ji-nae-se-yo", "translation": "How are you? (formal)", "example": "Casual: '잘 지냈어? (jal ji-naess-eo?)'. Response: '잘 지냈어요, 감사합니다.'", "order": 5}},
+  {"model": "lessons.phrase", "pk": 240, "fields": {"lesson": 50, "original": "잘 지냈어요, 감사합니다.", "pronunciation": "jal ji-naess-eo-yo, gam-sa-ham-ni-da", "translation": "I've been well, thank you.", "example": "Add '당신은요? (dangsin-eun-yo?)' — And you? — to be polite.", "order": 6}},
+  {"model": "lessons.phrase", "pk": 241, "fields": {"lesson": 50, "original": "실례합니다", "pronunciation": "sil-lye-ham-ni-da", "translation": "Excuse me (formal)", "example": "To get past someone or get attention. '저기요 (jeo-gi-yo)' is common in restaurants — 'hey there!'", "order": 7}},
+
+  {"model": "lessons.phrase", "pk": 242, "fields": {"lesson": 51, "original": "이것 / 저것", "pronunciation": "i-geot / jeo-geot", "translation": "this / that (over there)", "example": "'그것 (geu-geot)' = that near you. '이것 주세요.' (This one, please.)", "order": 1}},
+  {"model": "lessons.phrase", "pk": 243, "fields": {"lesson": 51, "original": "여기 / 저기", "pronunciation": "yeo-gi / jeo-gi", "translation": "here / over there", "example": "'여기 있어요.' (It's here.) '거기 (geo-gi)' = there near you.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 244, "fields": {"lesson": 51, "original": "이거 / 저거", "pronunciation": "i-geo / jeo-geo", "translation": "this one / that one (casual)", "example": "Casual spoken forms of 이것/저것. '이거 주세요.' (This one, please.) — very common.", "order": 3}},
+
+  {"model": "lessons.phrase", "pk": 245, "fields": {"lesson": 52, "original": "이다 / 있다", "pronunciation": "i-da / it-da", "translation": "to be", "example": "'학생이에요.' (I am a student.) '여기 있어요.' (It's here.) '이다' for identity, '있다' for existence/location.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 246, "fields": {"lesson": 52, "original": "있다 (to have)", "pronunciation": "it-da", "translation": "to have", "example": "'돈이 있어요.' (I have money.) Same word as 'to exist' — context clarifies meaning.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 247, "fields": {"lesson": 52, "original": "원하다", "pronunciation": "won-ha-da", "translation": "to want", "example": "'커피를 원해요.' (I want coffee.) Also common: '~고 싶어요 (~go sipeoyo)' = I want to [verb].", "order": 3}},
+  {"model": "lessons.phrase", "pk": 248, "fields": {"lesson": 52, "original": "좋아하다", "pronunciation": "jo-a-ha-da", "translation": "to like", "example": "'한국 음식을 좋아해요.' (I like Korean food.)", "order": 4}},
+  {"model": "lessons.phrase", "pk": 249, "fields": {"lesson": 52, "original": "알다 / 모르다", "pronunciation": "al-da / mo-reu-da", "translation": "to know / to not know", "example": "'알아요.' (I know.) '몰라요.' (I don't know.) Both very useful.", "order": 5}},
+  {"model": "lessons.phrase", "pk": 250, "fields": {"lesson": 52, "original": "가다", "pronunciation": "ga-da", "translation": "to go", "example": "'호텔에 가요.' (I'm going to the hotel.) '에 (e)' marks the destination.", "order": 6}},
+
+  {"model": "lessons.phrase", "pk": 251, "fields": {"lesson": 53, "original": "...을/를 원해요.", "pronunciation": "~eul/reul won-hae-yo", "translation": "I want...", "example": "'커피를 원해요.' (I want coffee.) '을/를' is the object marker — use '을' after consonants, '를' after vowels.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 252, "fields": {"lesson": 53, "original": "...을/를 주실 수 있어요?", "pronunciation": "~eul/reul ju-sil su it-seo-yo", "translation": "Could you give me...?", "example": "'물을 주실 수 있어요?' (Could you give me water?)", "order": 2}},
+  {"model": "lessons.phrase", "pk": 253, "fields": {"lesson": 53, "original": "...이/가 어디 있어요?", "pronunciation": "~i/ga eo-di it-seo-yo", "translation": "Where is...?", "example": "'화장실이 어디 있어요?' (Where is the bathroom?)", "order": 3}},
+  {"model": "lessons.phrase", "pk": 254, "fields": {"lesson": 53, "original": "...있어요?", "pronunciation": "~it-seo-yo", "translation": "Do you have...?", "example": "'영어 메뉴 있어요?' (Do you have an English menu?) Very natural shorthand.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 255, "fields": {"lesson": 53, "original": "...한국어로 어떻게 말해요?", "pronunciation": "~han-guk-eo-ro eo-tteo-ke mal-hae-yo", "translation": "How do you say ... in Korean?", "example": "Point at something or say the English word.", "order": 5}},
+
+  {"model": "lessons.phrase", "pk": 256, "fields": {"lesson": 54, "original": "이해 못 해요.", "pronunciation": "i-hae mot hae-yo", "translation": "I don't understand.", "example": "Koreans are very kind to learners — say this and they will try another way.", "order": 1}},
+  {"model": "lessons.phrase", "pk": 257, "fields": {"lesson": 54, "original": "다시 말씀해 주세요.", "pronunciation": "da-si mal-sseum-hae ju-se-yo", "translation": "Please say that again.", "example": "Formal and polite.", "order": 2}},
+  {"model": "lessons.phrase", "pk": 258, "fields": {"lesson": 54, "original": "천천히 말씀해 주세요.", "pronunciation": "cheon-cheon-hi mal-sseum-hae ju-se-yo", "translation": "Please speak slowly.", "example": "Korean spoken fast can sound very different from textbook Korean.", "order": 3}},
+  {"model": "lessons.phrase", "pk": 259, "fields": {"lesson": 54, "original": "무슨 뜻이에요?", "pronunciation": "mu-seun tteu-si-e-yo", "translation": "What does it mean?", "example": "Point at a word or sign.", "order": 4}},
+  {"model": "lessons.phrase", "pk": 260, "fields": {"lesson": 54, "original": "도와주세요.", "pronunciation": "do-wa-ju-se-yo", "translation": "Please help me.", "example": "Calm request. In an emergency: '도와주세요!' said urgently.", "order": 5}}
+]

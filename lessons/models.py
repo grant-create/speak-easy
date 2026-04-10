@@ -22,6 +22,7 @@ class Phrase(models.Model):
     pronunciation = models.CharField(max_length=300, blank=True)  # phonetic guide
     translation = models.CharField(max_length=300)    # in English
     example = models.TextField(blank=True)            # usage in a sentence
+    word_breakdown = models.JSONField(default=list, blank=True)  # [{"word": "...", "meaning": "..."}]
     order = models.PositiveIntegerField(default=0)
 
     def __str__(self):

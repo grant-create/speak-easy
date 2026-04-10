@@ -12,7 +12,7 @@
         <a class="brand" href="/">Speak Easy</a>
         <div>
             {% if user.is_authenticated %}
-                <a href="{% url 'favorites_list' %}">Favourites</a>
+                <a href="{% url 'favorites_list' %}">Favorites</a>
                 <a href="{% url 'profile' %}">{{ user.username }}</a>
                 <a href="{% url 'logout' %}">Log out</a>
             {% else %}

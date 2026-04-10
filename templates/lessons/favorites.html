@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Favourites — Speak Easy{% endblock %}
+{% block title %}Favorites — Speak Easy{% endblock %}
 
 {% block content %}
-<h1>Your favourites</h1>
+<h1>Your favorites</h1>
 
 {% if favorites %}
     {% for fav in favorites %}
@@ -27,7 +27,7 @@
                 <form method="post" action="{% url 'toggle_favorite' fav.phrase.id %}">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{% url 'favorites_list' %}">
-                    <button type="submit" class="fav-btn active" title="Remove from favourites">♥</button>
+                    <button type="submit" class="fav-btn active" title="Remove from favorites">♥</button>
                 </form>
             </div>
         </div>

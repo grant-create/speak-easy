@@ -35,7 +35,7 @@
             <form method="post" action="{% url 'toggle_favorite' phrase.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ request.path }}">
-                <button type="submit" class="fav-btn{% if phrase.id in favorited_ids %} active{% endif %}" title="{% if phrase.id in favorited_ids %}Remove from favourites{% else %}Save to favourites{% endif %}">
+                <button type="submit" class="fav-btn{% if phrase.id in favorited_ids %} active{% endif %}" title="{% if phrase.id in favorited_ids %}Remove from favorites{% else %}Save to favorites{% endif %}">
                     {% if phrase.id in favorited_ids %}♥{% else %}♡{% endif %}
                 </button>
             </form>

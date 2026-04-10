@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Favourites — Speak Easy{% endblock %}
+
+{% block content %}
+<h1>Your favourites</h1>
+
+{% if favorites %}
+    {% for fav in favorites %}
+        <div class="phrase-card">
+            <div class="phrase-card-top">
+                <div class="phrase-card-main">
+                    <p class="phrase-lang-tag">{{ fav.phrase.lesson.language.flag }} {{ fav.phrase.lesson.language.name }}</p>
+                    <p class="phrase-original">{{ fav.phrase.original }}</p>
+                    {% if fav.phrase.pronunciation %}
+                        <p class="phrase-pronunciation"><strong>Pronunciation:</strong> {{ fav.phrase.pronunciation }}</p>
+                    {% endif %}
+                    <p class="phrase-translation{% if not fav.phrase.word_breakdown %} last{% endif %}">{{ fav.phrase.translation }}</p>
+                    {% if fav.phrase.word_breakdown %}
+                        <div class="word-breakdown last">
+                            {% for item in fav.phrase.word_breakdown %}
+                                <span class="word-chip"><strong>{{ item.word }}</strong> <span>— {{ item.meaning }}</span></span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <form method="post" action="{% url 'toggle_favorite' fav.phrase.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'favorites_list' %}">
+                    <button type="submit" class="fav-btn active" title="Remove from favourites">♥</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>No saved phrases yet. Tap ♡ on any phrase in a lesson to save it here.</p>
+    </div>
+{% endif %}
+{% endblock %}

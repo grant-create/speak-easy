@@ -14,21 +14,32 @@
 
 {% for phrase in phrases %}
     <div class="phrase-card">
-        <p class="phrase-original">{{ phrase.original }}</p>
-        {% if phrase.pronunciation %}
-            <p class="phrase-pronunciation"><strong>Pronunciation:</strong> {{ phrase.pronunciation }}</p>
-        {% endif %}
-        <p class="phrase-translation{% if not phrase.word_breakdown and not phrase.example %} last{% endif %}">{{ phrase.translation }}</p>
-        {% if phrase.word_breakdown %}
-            <div class="word-breakdown{% if not phrase.example %} last{% endif %}">
-                {% for item in phrase.word_breakdown %}
-                    <span class="word-chip"><strong>{{ item.word }}</strong> <span>— {{ item.meaning }}</span></span>
-                {% endfor %}
+        <div class="phrase-card-top">
+            <div class="phrase-card-main">
+                <p class="phrase-original">{{ phrase.original }}</p>
+                {% if phrase.pronunciation %}
+                    <p class="phrase-pronunciation"><strong>Pronunciation:</strong> {{ phrase.pronunciation }}</p>
+                {% endif %}
+                <p class="phrase-translation{% if not phrase.word_breakdown and not phrase.example %} last{% endif %}">{{ phrase.translation }}</p>
+                {% if phrase.word_breakdown %}
+                    <div class="word-breakdown{% if not phrase.example %} last{% endif %}">
+                        {% for item in phrase.word_breakdown %}
+                            <span class="word-chip"><strong>{{ item.word }}</strong> <span>— {{ item.meaning }}</span></span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if phrase.example %}
+                    <p class="phrase-example">{{ phrase.example }}</p>
+                {% endif %}
             </div>
-        {% endif %}
-        {% if phrase.example %}
-            <p class="phrase-example">{{ phrase.example }}</p>
-        {% endif %}
+            <form method="post" action="{% url 'toggle_favorite' phrase.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" class="fav-btn{% if phrase.id in favorited_ids %} active{% endif %}" title="{% if phrase.id in favorited_ids %}Remove from favourites{% else %}Save to favourites{% endif %}">
+                    {% if phrase.id in favorited_ids %}♥{% else %}♡{% endif %}
+                </button>
+            </form>
+        </div>
     </div>
 {% empty %}
     <p>No phrases in this lesson yet.</p>

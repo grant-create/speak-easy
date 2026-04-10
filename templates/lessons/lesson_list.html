@@ -7,13 +7,22 @@
 
 <div class="lesson-list-header">
     <h1>{{ language.flag }} {{ language.name }}</h1>
-    <span class="lesson-count">{{ completed_count }} / {{ total_count }} complete</span>
+    <div class="lesson-list-meta">
+        {% if streak %}
+            <span class="streak-badge">🔥 {{ streak }}-day streak</span>
+        {% endif %}
+        <span class="lesson-count">{{ completed_count }} / {{ total_count }} complete</span>
+    </div>
 </div>
 
 {% if total_count %}
     <div class="progress-track">
         <div class="progress-fill" style="width: {% widthratio completed_count total_count 100 %}%;"></div>
     </div>
+{% endif %}
+
+{% if completed_count %}
+    <a href="{% url 'review_quiz' %}" class="btn btn-green btn-block review-btn">🔁 Review completed lessons</a>
 {% endif %}
 
 {% if lessons %}

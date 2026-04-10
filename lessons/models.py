@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from languages.models import Language
@@ -19,9 +20,9 @@ class Lesson(models.Model):
 class Phrase(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='phrases')
     original = models.CharField(max_length=300)       # in target language
-    pronunciation = models.CharField(max_length=300, blank=True)  # phonetic guide
+    pronunciation = models.CharField(max_length=300, blank=True)
     translation = models.CharField(max_length=300)    # in English
-    example = models.TextField(blank=True)            # usage in a sentence
+    example = models.TextField(blank=True)
     word_breakdown = models.JSONField(default=list, blank=True)  # [{"word": "...", "meaning": "..."}]
     order = models.PositiveIntegerField(default=0)
 
@@ -30,3 +31,13 @@ class Phrase(models.Model):
 
     class Meta:
         ordering = ['order']
+
+
+class FavoritePhrase(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_phrases')
+    phrase = models.ForeignKey(Phrase, on_delete=models.CASCADE, related_name='favorited_by')
+    saved_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'phrase')
+        ordering = ['-saved_at']

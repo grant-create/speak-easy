@@ -341,17 +341,44 @@ button:hover,
 }
 
 
+/* ---- Streak ------------------------------------------------- */
+.streak-badge {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.streak-complete {
+    font-size: 1rem;
+    color: #e67e22;
+    margin-bottom: 1.5rem;
+}
+
+
 /* ---- Lesson List ------------------------------------------- */
 .lesson-list-header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.lesson-list-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
 }
 
 .lesson-count {
     font-size: 0.9rem;
     color: #888;
+}
+
+.review-btn {
+    margin-bottom: 1rem;
 }
 
 .progress-track {
@@ -439,6 +466,42 @@ button:hover,
     padding: 1.25rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin-bottom: 1rem;
+}
+
+.phrase-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.phrase-card-main {
+    flex: 1;
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #ccc;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.fav-btn.active {
+    color: #e74c3c;
+}
+
+.fav-btn:hover {
+    background: none;
+    color: #e74c3c;
+}
+
+.phrase-lang-tag {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.4rem;
 }
 
 .phrase-original {
@@ -688,4 +751,99 @@ button:hover,
 .quiz-complete-actions {
     display: grid;
     gap: 0.75rem;
+}
+
+
+/* =============================================================
+   MOBILE
+   ============================================================= */
+
+@media (max-width: 600px) {
+
+    /* Nav */
+    nav {
+        padding: 0.75rem 1rem;
+    }
+
+    nav .brand {
+        font-size: 1rem;
+    }
+
+    nav a {
+        margin-left: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    /* Layout */
+    main {
+        margin: 1.5rem auto;
+        padding: 0 0.75rem;
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Buttons */
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Home hero */
+    .hero {
+        padding: 1rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+    }
+
+    /* Lesson list */
+    .lesson-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .lesson-list-meta {
+        flex-wrap: wrap;
+    }
+
+    /* Lesson detail */
+    .lesson-actions {
+        flex-direction: column;
+    }
+
+    .lesson-actions .btn {
+        text-align: center;
+    }
+
+    /* Quiz */
+    .quiz-wrap {
+        max-width: 100%;
+    }
+
+    .quiz-question-phrase {
+        font-size: 1.25rem;
+    }
+
+    /* Quiz complete */
+    .quiz-complete {
+        max-width: 100%;
+    }
 }

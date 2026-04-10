@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}{{ lesson.title }} — Practice{% endblock %}
+{% block title %}Review — {{ language.name }}{% endblock %}
 
 {% block content %}
 <div class="quiz-wrap">
 
     <div class="quiz-progress-row">
-        <a href="{% url 'lesson_detail' lesson.id %}" class="quiz-close">✕</a>
+        <a href="{% url 'lesson_list' %}" class="quiz-close">✕</a>
         <div class="quiz-progress-track">
             <div class="quiz-progress-fill" style="width: {% widthratio current total 100 %}%;"></div>
         </div>
@@ -40,9 +40,9 @@
         </div>
 
         {% if is_last %}
-            <a href="{% url 'quiz_complete' lesson.id %}" class="btn btn-block">See results →</a>
+            <a href="{% url 'review_complete' %}" class="btn btn-block">See results →</a>
         {% else %}
-            <a href="{% url 'lesson_quiz' lesson.id %}?q={{ next_index }}" class="btn btn-block">Next →</a>
+            <a href="{% url 'review_quiz' %}?q={{ next_index }}" class="btn btn-block">Next →</a>
         {% endif %}
 
     {% else %}

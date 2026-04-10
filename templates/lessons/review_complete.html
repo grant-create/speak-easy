@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Review Complete — Speak Easy{% endblock %}
+
+{% block content %}
+<div class="quiz-complete">
+
+    <div class="quiz-complete-emoji">
+        {% if score_percent == 100 %}🏆
+        {% elif score_percent >= 70 %}⭐
+        {% else %}💪
+        {% endif %}
+    </div>
+
+    <h1>
+        {% if score_percent == 100 %}Flawless!
+        {% elif score_percent >= 70 %}Nice review!
+        {% else %}Keep practising!
+        {% endif %}
+    </h1>
+    <p class="quiz-complete-subtitle">Review session complete</p>
+
+    {% if streak %}
+        <p class="streak-complete">🔥 {{ streak }}-day streak — keep it up!</p>
+    {% endif %}
+
+    <div class="card score-card">
+        <p class="score-number">{{ correct }}/{{ total }}</p>
+        <p class="score-label">correct answers</p>
+    </div>
+
+    <div class="quiz-complete-actions">
+        <a href="{% url 'review_quiz' %}?restart=1" class="btn btn-outline btn-block">Review again</a>
+        <a href="{% url 'lesson_list' %}" class="btn btn-block">Back to lessons</a>
+    </div>
+
+</div>
+{% endblock %}

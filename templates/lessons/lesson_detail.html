@@ -31,6 +31,24 @@
                 {% if phrase.example %}
                     <p class="phrase-example">{{ phrase.example }}</p>
                 {% endif %}
+                {% if phrase.conjugations %}
+                    <details class="conjugation-details">
+                        <summary class="conjugation-toggle">Conjugations</summary>
+                        <div class="conjugation-body">
+                            {% for table in phrase.conjugations %}
+                                {% if table.title %}<p class="conjugation-table-title">{{ table.title }}</p>{% endif %}
+                                <table class="conjugation-table">
+                                    {% for row in table.forms %}
+                                        <tr>
+                                            <td class="conj-label">{{ row.label }}</td>
+                                            <td class="conj-form">{{ row.form }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            {% endfor %}
+                        </div>
+                    </details>
+                {% endif %}
             </div>
             <form method="post" action="{% url 'toggle_favorite' phrase.id %}">
                 {% csrf_token %}

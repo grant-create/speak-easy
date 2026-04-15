@@ -7,7 +7,9 @@
     <h1>Welcome back</h1>
     <p class="auth-subtitle">Log in to continue learning.</p>
 
-    {% if form.non_field_errors %}
+    {% if rate_limited %}
+        <div class="auth-error">Too many login attempts. Please wait 15 minutes before trying again.</div>
+    {% elif form.non_field_errors %}
         <div class="auth-error">{{ form.non_field_errors.0 }}</div>
     {% endif %}
 

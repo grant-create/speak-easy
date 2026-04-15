@@ -26,6 +26,40 @@ class User(AbstractUser):
         return ul.language if ul else None
 
 
+class RateLimit(models.Model):
+    """Tracks authentication attempts for rate limiting — no Redis required."""
+    ip_address = models.GenericIPAddressField(db_index=True)
+    endpoint = models.CharField(max_length=50)
+    attempted_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['ip_address', 'endpoint', 'attempted_at']),
+        ]
+
+    @classmethod
+    def is_limited(cls, ip, endpoint, max_attempts=5, window_minutes=15):
+        from django.utils import timezone
+        import datetime
+        cutoff = timezone.now() - datetime.timedelta(minutes=window_minutes)
+        count = cls.objects.filter(
+            ip_address=ip, endpoint=endpoint, attempted_at__gte=cutoff
+        ).count()
+        return count >= max_attempts
+
+    @classmethod
+    def record(cls, ip, endpoint):
+        cls.objects.create(ip_address=ip, endpoint=endpoint)
+
+    @classmethod
+    def clear_old(cls, window_minutes=15):
+        """Prune entries older than the window to keep the table small."""
+        from django.utils import timezone
+        import datetime
+        cutoff = timezone.now() - datetime.timedelta(minutes=window_minutes)
+        cls.objects.filter(attempted_at__lt=cutoff).delete()
+
+
 class UserLanguage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_languages')
     language = models.ForeignKey('languages.Language', on_delete=models.CASCADE)

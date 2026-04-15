@@ -24,6 +24,8 @@ class Phrase(models.Model):
     translation = models.CharField(max_length=300)    # in English
     example = models.TextField(blank=True)
     word_breakdown = models.JSONField(default=list, blank=True)  # [{"word": "...", "meaning": "..."}]
+    # List of conjugation tables: [{"title": "ser", "forms": [{"label": "yo", "form": "soy"}, ...]}]
+    conjugations = models.JSONField(default=list, blank=True)
     order = models.PositiveIntegerField(default=0)
 
     def __str__(self):

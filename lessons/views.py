@@ -1,9 +1,16 @@
+import logging
 import random
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
+
+logger = logging.getLogger(__name__)
+
+# Maximum character length we'll accept for a quiz answer choice
+_MAX_ANSWER_LEN = 500
 
 from progress.models import UserLessonProgress
 
@@ -140,9 +147,18 @@ def lesson_quiz(request, lesson_id):
 
     # POST — submit answer
     if request.method == 'POST':
-        chosen = request.POST.get('chosen', '')
-        correct = request.POST.get('correct', '')
-        is_correct = chosen == correct
+        chosen = request.POST.get('chosen', '')[:_MAX_ANSWER_LEN]
+
+        # Derive the correct answer server-side — never trust the client
+        blank_word = current_q.get('blank_word')
+        if q_type == 'translate':
+            correct = current_phrase.translation
+        elif q_type == 'reverse':
+            correct = current_phrase.original
+        else:  # fill_blank
+            correct = blank_word or ''
+
+        is_correct = chosen.strip() == correct.strip()
 
         quiz_data['answers'][str(phrase_id)] = is_correct
         quiz_data['last_result'] = {
@@ -273,9 +289,18 @@ def review_quiz(request):
 
     # POST — submit answer
     if request.method == 'POST':
-        chosen = request.POST.get('chosen', '')
-        correct = request.POST.get('correct', '')
-        is_correct = chosen == correct
+        chosen = request.POST.get('chosen', '')[:_MAX_ANSWER_LEN]
+
+        # Derive the correct answer server-side — never trust the client
+        blank_word = current_q.get('blank_word')
+        if q_type == 'translate':
+            correct = current_phrase.translation
+        elif q_type == 'reverse':
+            correct = current_phrase.original
+        else:  # fill_blank
+            correct = blank_word or ''
+
+        is_correct = chosen.strip() == correct.strip()
 
         quiz_data['answers'][str(phrase_id)] = is_correct
         quiz_data['last_result'] = {
@@ -368,7 +393,14 @@ def toggle_favorite(request, phrase_id):
     fav, created = FavoritePhrase.objects.get_or_create(user=request.user, phrase=phrase)
     if not created:
         fav.delete()
-    next_url = request.POST.get('next', reverse('lesson_detail', args=[phrase.lesson.id]))
+
+    fallback = reverse('lesson_detail', args=[phrase.lesson.id])
+    next_url = request.POST.get('next', fallback)
+
+    # Reject redirects to external hosts (open redirect prevention)
+    if not url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):
+        next_url = fallback
+
     return redirect(next_url)
 
 

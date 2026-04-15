@@ -68,7 +68,6 @@
         <form method="post">
             {% csrf_token %}
             <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
-            <input type="hidden" name="correct" value="{{ correct_answer }}">
             <div class="quiz-choices">
                 {% for choice in choices %}
                     <button type="submit" name="chosen" value="{{ choice }}" class="quiz-choice">

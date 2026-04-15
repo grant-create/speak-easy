@@ -563,6 +563,78 @@ button:hover,
     padding-top: 0.6rem;
 }
 
+/* ---- Conjugation dropdown ------------------------------------------ */
+.conjugation-details {
+    margin-top: 0.75rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 0.5rem;
+}
+
+.conjugation-toggle {
+    font-size: 0.82rem;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.conjugation-toggle::before {
+    content: '▶';
+    font-size: 0.65rem;
+    transition: transform 0.15s ease;
+    display: inline-block;
+}
+
+.conjugation-details[open] .conjugation-toggle::before {
+    transform: rotate(90deg);
+}
+
+.conjugation-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.conjugation-body {
+    margin-top: 0.6rem;
+}
+
+.conjugation-table-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #666;
+    margin: 0.75rem 0 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.conjugation-table-title:first-child {
+    margin-top: 0;
+}
+
+.conjugation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.conj-label {
+    color: #999;
+    padding: 0.2rem 0.75rem 0.2rem 0;
+    white-space: nowrap;
+    width: 40%;
+}
+
+.conj-form {
+    color: #222;
+    font-weight: 500;
+    padding: 0.2rem 0;
+}
+
+
+/* ---- Lesson actions ------------------------------------------------ */
 .lesson-actions {
     margin-top: 2rem;
     display: flex;

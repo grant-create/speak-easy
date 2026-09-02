@@ -50,17 +50,26 @@ INSTALLED_APPS = [
     'languages',
     'lessons',
     'progress',
+    'pageview_analytics',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'pageview_analytics.middleware.PageViewTrackingMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# pageview_analytics -- see that app's config.py for every available key.
+# SITE_HOSTS mirrors ALLOWED_HOSTS so in-site navigation never counts as a
+# referral to itself; update both once this is deployed somewhere real.
+PAGEVIEW_ANALYTICS = {
+    'SITE_HOSTS': ALLOWED_HOSTS,
+}
 
 ROOT_URLCONF = 'speak_easy.urls'
 

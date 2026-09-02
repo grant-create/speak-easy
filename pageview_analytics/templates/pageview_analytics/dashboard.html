@@ -1,0 +1,262 @@
+{% load pageview_analytics_extras static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page View Analytics</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/satoshi">
+  <style>
+    /* Styles kept self-contained (no shared stylesheet/base template) -- see models.py; favicon is the one exception. */
+    :root {
+      --lightBeige:  #FDF7E9;
+      --darkerBeige: #ebd9b2;
+      --linenGreen:  #B7BD93;
+      --tanBrown:    #C3B28B;
+
+      --backgroundColor: var(--lightBeige);
+      --cardColor:        var(--darkerBeige);
+      --primaryColor:     var(--linenGreen);
+      --secondaryColorHover: darkseagreen;
+      --cardBorder:  #23262F;
+      --textColor:   #1a1a1a;
+      --mutedText:   #666;
+      --danger:      #E74C3C;
+      --shadow:      0 2px 12px rgba(0,0,0,0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--backgroundColor); color: var(--textColor);
+      font-family: 'Satoshi', 'Segoe UI', Verdana, sans-serif;
+    }
+    .page-wrapper { max-width: 1200px; margin: 2.5rem auto; padding: 0 1rem 3rem; }
+
+    .back-link { display: inline-block; margin-bottom: 1rem; font-size: 0.85rem; }
+
+    .analytics-page-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 2px solid var(--cardBorder); padding-bottom: 1rem; margin-bottom: 2rem;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .analytics-page-header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .analytics-page-header__meta { font-size: 0.85rem; color: var(--mutedText); }
+
+    .days-form select {
+      background: var(--cardColor); color: var(--textColor); border: 1.5px solid var(--cardBorder);
+      border-radius: 0; padding: 0.35rem 0.6rem; font-family: inherit; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer;
+    }
+
+    .notice {
+      background: var(--cardColor); border: 2px solid var(--cardBorder); border-left: 4px solid var(--danger);
+      color: var(--textColor); padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem;
+    }
+
+    .section-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #999; margin: 2rem 0 0.75rem;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+    .section-title .hint { text-transform: none; letter-spacing: normal; color: var(--mutedText); font-weight: 500; }
+
+    /* Headline stats -- mirrors .stat-grid */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      border: 2px solid var(--cardBorder); margin-bottom: 0.75rem;
+    }
+    .stat-grid__cell { padding: 1rem 1.25rem; border-right: 1px solid var(--cardBorder); background: var(--cardColor); }
+    .stat-grid__cell:last-child { border-right: none; }
+    .stat-grid__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #999; margin-bottom: 0.25rem; }
+    .stat-grid__value { font-size: 1.3rem; font-weight: 700; color: var(--textColor); }
+    .stat-grid__value--green { color: #6d8f3c; }
+
+    /* Data tables -- mirrors table.pt */
+    .table-wrap { overflow-x: auto; }
+    table.pt { width: 100%; border-collapse: collapse; background: var(--cardColor); border: 2px solid var(--cardBorder); font-size: 0.875rem; }
+    table.pt thead tr { background: var(--backgroundColor); border-bottom: 2px solid var(--cardBorder); }
+    table.pt th {
+      padding: 0.6rem 0.75rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #6d7a3f; text-align: left; white-space: nowrap;
+      cursor: pointer; user-select: none;
+    }
+    table.pt th:hover { color: var(--textColor); }
+    table.pt td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #ddd0ac; color: var(--textColor); vertical-align: middle; }
+    table.pt tbody tr:last-child td { border-bottom: none; }
+    table.pt tbody tr:hover { background: #e8e0cc; }
+    .td-muted { color: #999; font-size: 0.8rem; }
+
+    a { color: #5c7a37; text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <a href="{{ home_url }}" class="back-link">← Palmtree</a>
+
+  <div class="analytics-page-header">
+    <h1>Page View Analytics</h1>
+    <div class="analytics-page-header__meta">Last {{ days }} days</div>
+  </div>
+
+  <form class="days-form" method="get" style="margin-bottom: 1.5rem;">
+    <select name="days" onchange="this.form.submit()">
+      <option value="7" {% if days == 7 %}selected{% endif %}>7 days</option>
+      <option value="30" {% if days == 30 %}selected{% endif %}>30 days</option>
+      <option value="90" {% if days == 90 %}selected{% endif %}>90 days</option>
+      <option value="365" {% if days == 365 %}selected{% endif %}>365 days</option>
+    </select>
+  </form>
+
+  {% if unresolved_count %}
+  <div class="notice">{{ unresolved_count }} visitor address{{ unresolved_count|pluralize }} not yet located — counted as visitors for now.</div>
+  {% endif %}
+
+  <p class="section-title">Overview</p>
+  <div class="stat-grid">
+    <div class="stat-grid__cell">
+      <div class="stat-grid__label">Page Views</div>
+      <div class="stat-grid__value">{{ total_views }}</div>
+    </div>
+    <div class="stat-grid__cell">
+      <div class="stat-grid__label">Unique Visitors</div>
+      <div class="stat-grid__value">{{ unique_visitors }}</div>
+    </div>
+    <div class="stat-grid__cell">
+      <div class="stat-grid__label">Avg. Time on Page</div>
+      <div class="stat-grid__value stat-grid__value--green">{{ avg_seconds|duration }}</div>
+    </div>
+    <div class="stat-grid__cell">
+      <div class="stat-grid__label">Datacentre Views</div>
+      <div class="stat-grid__value">{{ datacenter_total }}</div>
+    </div>
+  </div>
+
+  <p class="section-title">Daily Traffic</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Day</th><th>Views</th><th>Unique Visitors</th></tr></thead>
+      <tbody>
+        {% for row in daily %}
+        <tr><td data-sort="{{ row.day|date:'U' }}">{{ row.day }}</td><td data-sort="{{ row.views }}">{{ row.views }}</td><td data-sort="{{ row.uniques }}">{{ row.uniques }}</td></tr>
+        {% empty %}<tr><td colspan="3" class="td-muted">No traffic yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Busiest Pages</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Page</th><th>Views</th></tr></thead>
+      <tbody>
+        {% for row in busiest_pages %}
+        <tr><td>{{ row.page }}</td><td data-sort="{{ row.views }}">{{ row.views }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="td-muted">No traffic yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Referrers</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Source</th><th>Views</th></tr></thead>
+      <tbody>
+        {% for host, views in referrers %}
+        <tr><td>{{ host }}</td><td data-sort="{{ views }}">{{ views }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="td-muted">No external referrers yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">By Country</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Country</th><th>Views</th></tr></thead>
+      <tbody>
+        {% for row in by_country %}
+        <tr><td>{{ row.location__country|default:"Unknown" }}</td><td data-sort="{{ row.views }}">{{ row.views }}</td></tr>
+        {% empty %}<tr><td colspan="2" class="td-muted">No located traffic yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Recent Sign-ins</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Time</th><th>User</th><th>IP</th></tr></thead>
+      <tbody>
+        {% for l in recent_logins %}
+        <tr>
+          <td data-sort="{{ l.created_at|date:'U' }}">{{ l.created_at|date:'M j, H:i' }}</td>
+          <td>{{ l.user.username|default:"deleted user" }}</td>
+          <td>{{ l.ip_address }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="3" class="td-muted">No sign-ins yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Visitors</p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Time</th><th>Page</th><th>IP</th><th>Location</th><th>Referrer</th><th>Time on Page</th></tr></thead>
+      <tbody>
+        {% for v in recent_visitors %}
+        <tr>
+          <td data-sort="{{ v.created_at|date:'U' }}">{{ v.created_at|date:'M j, H:i' }}</td>
+          <td>{{ v.page }}</td>
+          <td>{{ v.ip_address }}</td>
+          <td>{% if v.location %}{{ v.location.city }}{% if v.location.city and v.location.country %}, {% endif %}{{ v.location.country }}{% else %}—{% endif %}</td>
+          <td class="td-muted">{{ v.referrer|default:"—"|truncatechars:40 }}</td>
+          <td data-sort="{{ v.duration_seconds|default:0 }}">{{ v.duration_seconds|duration }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="6" class="td-muted">No visits yet.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="section-title">Datacentre Traffic <span class="hint">(excluded from every figure above)</span></p>
+  <div class="table-wrap">
+    <table class="pt sortable">
+      <thead><tr><th>Time</th><th>Page</th><th>IP</th><th>Location</th><th>Time on Page</th></tr></thead>
+      <tbody>
+        {% for v in datacenter_recent %}
+        <tr>
+          <td data-sort="{{ v.created_at|date:'U' }}">{{ v.created_at|date:'M j, H:i' }}</td>
+          <td>{{ v.page }}</td>
+          <td>{{ v.ip_address }}</td>
+          <td>{% if v.location %}{{ v.location.city }}{% if v.location.city and v.location.country %}, {% endif %}{{ v.location.country }}{% else %}—{% endif %}</td>
+          <td data-sort="{{ v.duration_seconds|default:0 }}">{{ v.duration_seconds|duration }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="5" class="td-muted">None.</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  // Minimal click-to-sort: reads data-sort when present, else cell text.
+  document.querySelectorAll('table.sortable').forEach(function (table) {
+    var state = {};
+    table.querySelectorAll('th').forEach(function (th, i) {
+      th.addEventListener('click', function () {
+        var tbody = table.querySelector('tbody');
+        var rows = Array.from(tbody.querySelectorAll('tr'));
+        var dir = state[i] = (state[i] === 1) ? -1 : 1;
+        rows.sort(function (a, b) {
+          var ca = a.children[i], cb = b.children[i];
+          var va = ca.dataset.sort !== undefined ? parseFloat(ca.dataset.sort) : ca.textContent.trim();
+          var vb = cb.dataset.sort !== undefined ? parseFloat(cb.dataset.sort) : cb.textContent.trim();
+          if (va < vb) return -1 * dir;
+          if (va > vb) return 1 * dir;
+          return 0;
+        });
+        rows.forEach(function (r) { tbody.appendChild(r); });
+      });
+    });
+  });
+</script>
+</body>
+</html>

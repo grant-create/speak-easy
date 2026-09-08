@@ -754,6 +754,55 @@ button:hover,
     background: #1a1a1a;
 }
 
+.quiz-arrange-answer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+}
+
+.quiz-word-chip {
+    padding: 0.5rem 0.85rem;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.quiz-word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-word-tile {
+    padding: 0.5rem 0.85rem;
+    background: #fff;
+    color: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.quiz-word-tile:hover:not(:disabled) {
+    border-color: #666;
+}
+
+.quiz-word-tile:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
 .quiz-question-card {
     background: #fff;
     border-radius: 8px;

@@ -28,6 +28,8 @@ def _build_questions(phrases):
         types = ['translate', 'reverse']
         if phrase.word_breakdown and len(phrase.word_breakdown) > 1:
             types.append('fill_blank')
+        if len(phrase.translation.split()) > 1:
+            types.append('arrange')
         q_type = random.choice(types)
         q = {'id': phrase.id, 'type': q_type}
         if q_type == 'fill_blank':
@@ -155,6 +157,8 @@ def lesson_quiz(request, lesson_id):
             correct = current_phrase.translation
         elif q_type == 'reverse':
             correct = current_phrase.original
+        elif q_type == 'arrange':
+            correct = current_phrase.translation
         else:  # fill_blank
             correct = blank_word or ''
 
@@ -177,6 +181,7 @@ def lesson_quiz(request, lesson_id):
     last_result = quiz_data.get('last_result') if show_result else None
 
     blank_word = current_q.get('blank_word')
+    word_bank = []
     if q_type == 'translate':
         question_text = current_phrase.original
         correct_answer = current_phrase.translation
@@ -185,14 +190,23 @@ def lesson_quiz(request, lesson_id):
         question_text = current_phrase.translation
         correct_answer = current_phrase.original
         show_pronunciation = False
+    elif q_type == 'arrange':
+        question_text = current_phrase.original
+        correct_answer = current_phrase.translation
+        show_pronunciation = False
+        word_bank = correct_answer.split()
+        random.shuffle(word_bank)
     else:  # fill_blank
         question_text = current_phrase.original.replace(blank_word, '___', 1)
         correct_answer = blank_word
         show_pronunciation = True
 
-    distractors = _get_distractors(q_type, lesson.language, phrase_id, correct_answer, blank_word)
-    choices = distractors + [correct_answer]
-    random.shuffle(choices)
+    if q_type == 'arrange':
+        choices = []
+    else:
+        distractors = _get_distractors(q_type, lesson.language, phrase_id, correct_answer, blank_word)
+        choices = distractors + [correct_answer]
+        random.shuffle(choices)
 
     next_index = current_index + 1
 
@@ -204,6 +218,7 @@ def lesson_quiz(request, lesson_id):
         'show_pronunciation': show_pronunciation,
         'correct_answer': correct_answer,
         'choices': choices,
+        'word_bank': word_bank,
         'current': current_index + 1,
         'total': len(questions),
         'current_index': current_index,
@@ -297,6 +312,8 @@ def review_quiz(request):
             correct = current_phrase.translation
         elif q_type == 'reverse':
             correct = current_phrase.original
+        elif q_type == 'arrange':
+            correct = current_phrase.translation
         else:  # fill_blank
             correct = blank_word or ''
 
@@ -319,6 +336,7 @@ def review_quiz(request):
     last_result = quiz_data.get('last_result') if show_result else None
 
     blank_word = current_q.get('blank_word')
+    word_bank = []
     if q_type == 'translate':
         question_text = current_phrase.original
         correct_answer = current_phrase.translation
@@ -327,14 +345,23 @@ def review_quiz(request):
         question_text = current_phrase.translation
         correct_answer = current_phrase.original
         show_pronunciation = False
+    elif q_type == 'arrange':
+        question_text = current_phrase.original
+        correct_answer = current_phrase.translation
+        show_pronunciation = False
+        word_bank = correct_answer.split()
+        random.shuffle(word_bank)
     else:  # fill_blank
         question_text = current_phrase.original.replace(blank_word, '___', 1)
         correct_answer = blank_word
         show_pronunciation = True
 
-    distractors = _get_distractors(q_type, language, phrase_id, correct_answer, blank_word)
-    choices = distractors + [correct_answer]
-    random.shuffle(choices)
+    if q_type == 'arrange':
+        choices = []
+    else:
+        distractors = _get_distractors(q_type, language, phrase_id, correct_answer, blank_word)
+        choices = distractors + [correct_answer]
+        random.shuffle(choices)
 
     next_index = current_index + 1
 
@@ -346,6 +373,7 @@ def review_quiz(request):
         'show_pronunciation': show_pronunciation,
         'correct_answer': correct_answer,
         'choices': choices,
+        'word_bank': word_bank,
         'current': current_index + 1,
         'total': len(questions),
         'current_index': current_index,

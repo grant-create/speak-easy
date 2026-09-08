@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Review — {{ language.name }}{% endblock %}
 
@@ -56,6 +57,9 @@
             {% elif question_type == 'reverse' %}
                 <p class="quiz-question-label">How do you say this?</p>
                 <p class="quiz-question-phrase">{{ question_text }}</p>
+            {% elif question_type == 'arrange' %}
+                <p class="quiz-question-label">Tap the words in order</p>
+                <p class="quiz-question-phrase">{{ question_text }}</p>
             {% else %}
                 <p class="quiz-question-label">Which word fills the blank?</p>
                 <p class="quiz-question-phrase">{{ question_text }}</p>
@@ -65,17 +69,33 @@
             {% endif %}
         </div>
 
-        <form method="post">
-            {% csrf_token %}
-            <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
-            <div class="quiz-choices">
-                {% for choice in choices %}
-                    <button type="submit" name="chosen" value="{{ choice }}" class="quiz-choice">
-                        {{ choice }}
-                    </button>
+        {% if question_type == 'arrange' %}
+            <div class="quiz-arrange-answer" id="arrange-answer"></div>
+            <div class="quiz-word-bank" id="arrange-bank">
+                {% for word in word_bank %}
+                    <button type="button" class="quiz-word-tile" data-word="{{ word }}">{{ word }}</button>
                 {% endfor %}
             </div>
-        </form>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
+                <input type="hidden" name="chosen" id="arrange-chosen" value="">
+                <button type="submit" id="arrange-submit" class="btn btn-block" disabled>Check</button>
+            </form>
+            <script src="{% static 'js/quiz-arrange.js' %}" defer></script>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="phrase_id" value="{{ phrase.id }}">
+                <div class="quiz-choices">
+                    {% for choice in choices %}
+                        <button type="submit" name="chosen" value="{{ choice }}" class="quiz-choice">
+                            {{ choice }}
+                        </button>
+                    {% endfor %}
+                </div>
+            </form>
+        {% endif %}
     {% endif %}
 
 </div>

@@ -2,7 +2,7 @@ import json
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.cache import cache
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -61,3 +61,16 @@ def dashboard(request):
     data = stats.build_dashboard(days=days, site_hosts=config.get('SITE_HOSTS'))
     data['home_url'] = config.get('HOME_URL')
     return render(request, 'pageview_analytics/dashboard.html', data)
+
+
+def summary_json(request):
+    """Machine-readable figure for the cross-project analytics hub. No
+    Django session to check here (called server-to-server), so it's gated
+    by its own shared-secret key instead of @staff_member_required --
+    disabled entirely (404) unless SUMMARY_API_KEY is actually configured."""
+    api_key = config.get('SUMMARY_API_KEY')
+    if not api_key:
+        return HttpResponse(status=404)
+    if request.GET.get('key') != api_key:
+        return HttpResponse(status=401)
+    return JsonResponse(stats.summary())

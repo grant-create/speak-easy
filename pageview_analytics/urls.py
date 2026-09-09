@@ -7,4 +7,5 @@ app_name = 'pageview_analytics'
 urlpatterns = [
     path('pageview-analytics/', views.dashboard, name='dashboard'),
     path('pageview-analytics/beacon/', views.duration_beacon, name='duration_beacon'),
+    path('pageview-analytics/summary.json', views.summary_json, name='summary_json'),
 ]

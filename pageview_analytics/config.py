@@ -14,6 +14,7 @@ app works with zero configuration when first dropped into a project:
         'HUMAN_MIN_SECONDS': 30,
         'AUTO_PROMOTE_VISITORS': True,
         'HOME_URL': '/',  # "back to site" link on the dashboard
+        'SUMMARY_API_KEY': '',  # enables /pageview-analytics/summary.json for the cross-project hub
     }
 """
 from django.conf import settings
@@ -54,6 +55,11 @@ _DEFAULTS = {
     # know the host project's urls.py at all. Default of '/' works for any
     # project whose homepage is the site root.
     'HOME_URL': '/',
+
+    # Shared secret gating /pageview-analytics/summary.json -- the machine-
+    # readable endpoint the cross-project hub polls. Empty means disabled;
+    # dashboard() stays session-gated via @staff_member_required regardless.
+    'SUMMARY_API_KEY': '',
 }
 
 

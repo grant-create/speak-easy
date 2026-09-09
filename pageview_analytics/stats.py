@@ -122,3 +122,18 @@ def build_dashboard(days=30, site_hosts=(), visitors_limit=200, datacentres_limi
         ),
         'datacenter_total': datacenter_qs.count(),
     }
+
+
+def summary():
+    """Lightweight cross-project figure for the analytics hub -- same
+    datacentre exclusion as build_dashboard(), no date window (all-time)."""
+    visitor_qs, _ = visitor_and_datacenter_querysets()
+    top = visitor_qs.values('page').annotate(views=Count('id')).order_by('-views').first()
+    last = visitor_qs.order_by('-created_at').first()
+
+    return {
+        'total': visitor_qs.count(),
+        'today': visitor_qs.filter(created_at__date=timezone.now().date()).count(),
+        'topPage': top['page'] if top else None,
+        'lastHit': last.created_at.isoformat() if last else None,
+    }

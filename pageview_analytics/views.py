@@ -58,7 +58,12 @@ def dashboard(request):
     unguessable URL -- unlike a static PHP site, this app has real auth
     sitting right there, so there's no reason not to use it."""
     days = int(request.GET.get('days', 30))
-    data = stats.build_dashboard(days=days, site_hosts=config.get('SITE_HOSTS'))
+    tab = request.GET.get('tab')
+    if tab not in ('mine', 'others'):
+        tab = 'others'
+    data = stats.build_dashboard(
+        days=days, site_hosts=config.get('SITE_HOSTS'), tab=tab,
+    )
     data['home_url'] = config.get('HOME_URL')
     return render(request, 'pageview_analytics/dashboard.html', data)
 

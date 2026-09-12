@@ -76,6 +76,12 @@ def track_visit(request, visit_id):
         except Exception:
             pass  # a lookup failure should cost the location, not the page view
 
+    # By username, not IP -- travels correctly with the owner across networks/locations.
+    user = getattr(request, 'user', None)
+    is_owner = bool(
+        user and user.is_authenticated and user.get_username() in config.get('OWNER_USERNAMES')
+    )
+
     view = PageView.objects.create(
         visit_id=visit_id,
         page=page,
@@ -84,6 +90,7 @@ def track_visit(request, visit_id):
         referrer=clean_referrer(request.META.get('HTTP_REFERER', '')),
         user_agent=user_agent[:200],
         visitor_key=PageView.make_visitor_key(ip, user_agent),
+        is_owner=is_owner,
     )
 
     return view

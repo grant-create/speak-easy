@@ -69,6 +69,7 @@ MIDDLEWARE = [
 # referral to itself; update both once this is deployed somewhere real.
 PAGEVIEW_ANALYTICS = {
     'SITE_HOSTS': ALLOWED_HOSTS,
+    'OWNER_USERNAMES': ['grant'],
     'SUMMARY_API_KEY': os.environ.get('PAGEVIEW_SUMMARY_API_KEY', ''),
 }
 

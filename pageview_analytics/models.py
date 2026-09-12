@@ -135,6 +135,9 @@ class PageView(models.Model):
     # comparisons in every query.
     visitor_key = models.CharField(max_length=16, db_index=True)
 
+    # True if authenticated as an OWNER_USERNAMES user at track time -- travels with the person, unlike a static IP/CIDR list.
+    is_owner = models.BooleanField(default=False, db_index=True)
+
     duration_seconds = models.PositiveIntegerField(null=True, blank=True)
 
     created_at = models.DateTimeField(default=timezone.now, db_index=True)

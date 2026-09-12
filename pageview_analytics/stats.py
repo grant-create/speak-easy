@@ -11,7 +11,7 @@ import datetime
 from collections import Counter
 from urllib.parse import urlparse
 
-from django.db.models import Avg, Count
+from django.db.models import Avg, Count, Q
 from django.db.models.functions import TruncDate
 from django.utils import timezone
 
@@ -23,12 +23,28 @@ def _datacenter_location_ids():
     return [loc.id for loc in VisitorLocation.objects.all() if loc.is_datacenter()]
 
 
-def visitor_and_datacenter_querysets(since=None):
-    """Split page views into (real visitors, datacentre traffic). An address
-    with no location yet counts as a visitor -- guessing "datacentre" for an
+def _owner_ip_addresses():
+    """IPs an owner has actually signed in from -- catches owner traffic even
+    when is_owner wasn't set (no active session on that particular request)."""
+    owners = config.get('OWNER_USERNAMES')
+    if not owners:
+        return set()
+    return set(LoginEvent.objects.filter(user__username__in=owners).values_list('ip_address', flat=True))
+
+
+def _mine_filter():
+    return Q(is_owner=True) | Q(ip_address__in=_owner_ip_addresses())
+
+
+def visitor_and_datacenter_querysets(since=None, tab='others'):
+    """Split page views into (real visitors, datacentre traffic) for one tab
+    -- 'others' (everyone but the owner) or 'mine' (the owner's own traffic,
+    by username or by any IP they've ever signed in from). An address with no
+    location yet counts as a visitor -- guessing "datacentre" for an
     unresolved lookup would hide a real person from every figure; guessing
     "visitor" only leaves a scraper on screen until it resolves."""
-    qs = PageView.objects.all()
+    mine = _mine_filter()
+    qs = PageView.objects.filter(mine) if tab == 'mine' else PageView.objects.exclude(mine)
     if since is not None:
         qs = qs.filter(created_at__gte=since)
 
@@ -61,9 +77,9 @@ def _referrer_breakdown(visitor_qs, site_hosts):
     return counts.most_common(50)
 
 
-def build_dashboard(days=30, site_hosts=(), visitors_limit=200, datacentres_limit=50):
+def build_dashboard(days=30, site_hosts=(), visitors_limit=200, datacentres_limit=50, tab='others'):
     since = timezone.now() - datetime.timedelta(days=days)
-    visitor_qs, datacenter_qs = visitor_and_datacenter_querysets(since)
+    visitor_qs, datacenter_qs = visitor_and_datacenter_querysets(since, tab=tab)
 
     total_views = visitor_qs.count()
     unique_visitors = visitor_qs.values('visitor_key').distinct().count()
@@ -98,6 +114,7 @@ def build_dashboard(days=30, site_hosts=(), visitors_limit=200, datacentres_limi
 
     return {
         'days': days,
+        'tab': tab,
         'total_views': total_views,
         'unique_visitors': unique_visitors,
         'avg_seconds': round(avg_seconds) if avg_seconds else None,

@@ -48,6 +48,12 @@
       cursor: pointer;
     }
 
+    .tab-btn {
+      background: var(--cardColor); color: var(--textColor); border: 1.5px solid var(--cardBorder);
+      padding: 0.35rem 0.7rem; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    }
+    .tab-btn--active { background: var(--primaryColor); color: #fff; border-color: var(--primaryColor); }
+
     .notice {
       background: var(--cardColor); border: 2px solid var(--cardBorder); border-left: 4px solid var(--danger);
       color: var(--textColor); padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem;
@@ -97,16 +103,20 @@
 
   <div class="analytics-page-header">
     <h1>Page View Analytics</h1>
-    <div class="analytics-page-header__meta">Last {{ days }} days</div>
+    <div class="analytics-page-header__meta">Last {{ days }} days — {% if tab == 'mine' %}My Traffic{% else %}All Traffic{% endif %}</div>
   </div>
 
-  <form class="days-form" method="get" style="margin-bottom: 1.5rem;">
+  <form class="days-form" method="get" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.25rem;">
     <select name="days" onchange="this.form.submit()">
       <option value="7" {% if days == 7 %}selected{% endif %}>7 days</option>
       <option value="30" {% if days == 30 %}selected{% endif %}>30 days</option>
       <option value="90" {% if days == 90 %}selected{% endif %}>90 days</option>
       <option value="365" {% if days == 365 %}selected{% endif %}>365 days</option>
     </select>
+    <div class="tab-group" style="display: flex; gap: 0.4rem;">
+      <button type="submit" name="tab" value="others" class="tab-btn {% if tab == 'others' %}tab-btn--active{% endif %}">All Traffic</button>
+      <button type="submit" name="tab" value="mine" class="tab-btn {% if tab == 'mine' %}tab-btn--active{% endif %}">My Traffic</button>
+    </div>
   </form>
 
   {% if unresolved_count %}

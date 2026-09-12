@@ -9,6 +9,7 @@ app works with zero configuration when first dropped into a project:
         'IGNORE_NETWORKS': ['15.177.0.0/18'],   # extra CIDRs/IPs to never count
         'VISITOR_NETWORKS': ['203.0.113.5'],    # always real, overrides the hosting flag
         'DATACENTRE_NETWORKS': ['46.173.0.0/16'],  # always datacentre, overrides it back
+        'OWNER_USERNAMES': ['grant'],   # still recorded, just left out of dashboard figures
         'SITE_HOSTS': ['example.com', 'www.example.com'],  # self-referrals to ignore
         'EXCLUDE_PATH_PREFIXES': ['/admin/', '/api/'],  # never tracked
         'HUMAN_MIN_SECONDS': 30,
@@ -35,6 +36,9 @@ _DEFAULTS = {
     ],
     'VISITOR_NETWORKS': [],
     'DATACENTRE_NETWORKS': [],
+
+    # Matched by authenticated username at track time, not IP -- stays correct while travelling; unlike IGNORE_NETWORKS, still recorded.
+    'OWNER_USERNAMES': [],
 
     'SITE_HOSTS': [],
 
